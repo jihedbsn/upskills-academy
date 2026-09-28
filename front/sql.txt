@@ -1,0 +1,646 @@
+-- Best-effort SQL schema reconstructed from Laravel models (MySQL)
+-- Run in a clean database. Adjust types/indexes as needed.
+
+-- Users (Laravel default)
+CREATE TABLE IF NOT EXISTS users (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NULL,
+  nom VARCHAR(255) NULL,
+  email VARCHAR(255) UNIQUE,
+  telephone VARCHAR(50) NULL,
+  role VARCHAR(50) NULL,
+  password VARCHAR(255) NOT NULL,
+  remember_token VARCHAR(100) NULL,
+  email_verified_at TIMESTAMP NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Students (auth separate)
+CREATE TABLE IF NOT EXISTS students (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(100) NOT NULL,
+  last_name VARCHAR(100) NOT NULL,
+  email VARCHAR(255) UNIQUE,
+  phone VARCHAR(50) NULL,
+  password VARCHAR(255) NOT NULL,
+  country VARCHAR(100) NULL,
+  image VARCHAR(255) NULL,
+  email_verified_at TIMESTAMP NULL,
+  remember_token VARCHAR(100) NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Admins
+CREATE TABLE IF NOT EXISTS admins (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(100) NOT NULL,
+  last_name VARCHAR(100) NOT NULL,
+  email VARCHAR(255) UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  phone VARCHAR(50) NULL,
+  avatar VARCHAR(255) NULL,
+  role VARCHAR(50) NULL,
+  permissions JSON NULL,
+  is_active TINYINT(1) DEFAULT 1,
+  last_login_at TIMESTAMP NULL,
+  last_login_ip VARCHAR(45) NULL,
+  email_verified_at TIMESTAMP NULL,
+  remember_token VARCHAR(100) NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- WebMasters
+CREATE TABLE IF NOT EXISTS web_masters (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(100) NOT NULL,
+  last_name VARCHAR(100) NOT NULL,
+  email VARCHAR(255) UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  phone VARCHAR(50) NULL,
+  avatar VARCHAR(255) NULL,
+  role VARCHAR(50) NULL,
+  permissions JSON NULL,
+  is_active TINYINT(1) DEFAULT 1,
+  last_login_at TIMESTAMP NULL,
+  last_login_ip VARCHAR(45) NULL,
+  email_verified_at TIMESTAMP NULL,
+  remember_token VARCHAR(100) NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- User activities (morph to user)
+CREATE TABLE IF NOT EXISTS user_activities (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_type VARCHAR(255) NULL,
+  user_id BIGINT UNSIGNED NULL,
+  action VARCHAR(100) NULL,
+  model_type VARCHAR(255) NULL,
+  model_id BIGINT UNSIGNED NULL,
+  description TEXT NULL,
+  old_values JSON NULL,
+  new_values JSON NULL,
+  ip_address VARCHAR(45) NULL,
+  user_agent TEXT NULL,
+  url TEXT NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_user (user_type, user_id),
+  KEY idx_model (model_type, model_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Countries
+CREATE TABLE IF NOT EXISTS countries (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  titre VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Categories
+CREATE TABLE IF NOT EXISTS categories (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  titre VARCHAR(255) NULL,
+  titre_ar VARCHAR(255) NULL,
+  titre_en VARCHAR(255) NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Teachers
+CREATE TABLE IF NOT EXISTS teachers (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(100) NOT NULL,
+  prenom VARCHAR(100) NOT NULL,
+  email VARCHAR(255) UNIQUE,
+  images VARCHAR(255) NULL,
+  password VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Certifs
+CREATE TABLE IF NOT EXISTS certifs (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(255) NOT NULL,
+  file_url VARCHAR(255) NULL,
+  image_url VARCHAR(255) NULL,
+  template_data JSON NULL,
+  orientation VARCHAR(20) NULL,
+  is_active TINYINT(1) DEFAULT 1,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Products
+CREATE TABLE IF NOT EXISTS products (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  iscach TINYINT(1) DEFAULT 0,
+  categories_id BIGINT UNSIGNED NULL,
+  period VARCHAR(50) NULL,
+  point INT DEFAULT 0,
+  video VARCHAR(255) NULL,
+  image VARCHAR(255) NULL,
+  promo_points INT NULL,
+  langue VARCHAR(10) NULL,
+  statut VARCHAR(50) NULL,
+  online TINYINT(1) DEFAULT 0,
+  classroom TINYINT(1) DEFAULT 0,
+  teacher_id BIGINT UNSIGNED NULL,
+  country_id BIGINT UNSIGNED NULL,
+  certif_id BIGINT UNSIGNED NULL,
+  type_course VARCHAR(20) NULL,
+  goverrnement VARCHAR(255) NULL,
+  date_debut DATE NULL,
+  date_fin DATE NULL,
+  prix DECIMAL(10,2) DEFAULT 0,
+  is_exam_video TINYINT(1) DEFAULT 0,
+  is_stage TINYINT(1) DEFAULT 0,
+  is_classroom TINYINT(1) DEFAULT 0,
+  is_zoom TINYINT(1) DEFAULT 0,
+  is_online TINYINT(1) DEFAULT 0,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_products_category (categories_id),
+  KEY idx_products_teacher (teacher_id),
+  KEY idx_products_country (country_id),
+  KEY idx_products_certif (certif_id),
+  CONSTRAINT fk_products_category FOREIGN KEY (categories_id) REFERENCES categories(id) ON DELETE SET NULL,
+  CONSTRAINT fk_products_teacher FOREIGN KEY (teacher_id) REFERENCES teachers(id) ON DELETE SET NULL,
+  CONSTRAINT fk_products_country FOREIGN KEY (country_id) REFERENCES countries(id) ON DELETE SET NULL
+  -- certif_id left without FK to avoid order issues; add if needed
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Product Types
+CREATE TABLE IF NOT EXISTS product_types (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  products_id BIGINT UNSIGNED NOT NULL,
+  title VARCHAR(255) NULL,
+  metakeyword VARCHAR(255) NULL,
+  content TEXT NULL,
+  metadescription VARCHAR(255) NULL,
+  type VARCHAR(50) NULL,
+  type_course VARCHAR(20) NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_product_types_product (products_id),
+  CONSTRAINT fk_product_types_product FOREIGN KEY (products_id) REFERENCES products(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Resources
+CREATE TABLE IF NOT EXISTS resources (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name_ar VARCHAR(255) NULL,
+  name_en VARCHAR(255) NULL,
+  type VARCHAR(50) NULL,
+  file VARCHAR(255) NULL,
+  duration INT NULL,
+  videos JSON NULL,
+  video_files JSON NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Product Studies
+CREATE TABLE IF NOT EXISTS product_studies (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  products_id BIGINT UNSIGNED NOT NULL,
+  name_ar VARCHAR(255) NULL,
+  name_en VARCHAR(255) NULL,
+  resource_id BIGINT UNSIGNED NULL,
+  lang VARCHAR(10) NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_product_studies_product (products_id),
+  KEY idx_product_studies_resource (resource_id),
+  CONSTRAINT fk_product_studies_product FOREIGN KEY (products_id) REFERENCES products(id) ON DELETE CASCADE,
+  CONSTRAINT fk_product_studies_resource FOREIGN KEY (resource_id) REFERENCES resources(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Product Variations
+CREATE TABLE IF NOT EXISTS product_variations (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  products_id BIGINT UNSIGNED NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  slug VARCHAR(255) NULL,
+  short_description TEXT NULL,
+  description TEXT NULL,
+  ad VARCHAR(255) NULL,
+  lang VARCHAR(10) NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_product_variations_product (products_id),
+  CONSTRAINT fk_product_variations_product FOREIGN KEY (products_id) REFERENCES products(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Product Students (pivot with extra fields)
+CREATE TABLE IF NOT EXISTS product_students (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  product_id BIGINT UNSIGNED NOT NULL,
+  student_id BIGINT UNSIGNED NOT NULL,
+  date DATE NULL,
+  is_active TINYINT(1) DEFAULT 0,
+  access_granted_at TIMESTAMP NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  UNIQUE KEY uniq_product_student (product_id, student_id),
+  KEY idx_ps_student (student_id),
+  CONSTRAINT fk_ps_product FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
+  CONSTRAINT fk_ps_student FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Books
+CREATE TABLE IF NOT EXISTS books (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  titre_ar VARCHAR(255) NULL,
+  titre_en VARCHAR(255) NULL,
+  description_short_ar TEXT NULL,
+  description_short_en TEXT NULL,
+  description_ar TEXT NULL,
+  description_en TEXT NULL,
+  file VARCHAR(255) NULL,
+  summary VARCHAR(255) NULL,
+  image VARCHAR(255) NULL,
+  prix DECIMAL(10,2) DEFAULT 0,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Orders
+CREATE TABLE IF NOT EXISTS orders (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  product_id BIGINT UNSIGNED NULL,
+  book_id BIGINT UNSIGNED NULL,
+  student_id BIGINT UNSIGNED NULL,
+  price DECIMAL(10,2) DEFAULT 0,
+  payment_success TINYINT(1) DEFAULT 0,
+  payment_method VARCHAR(50) NULL,
+  transaction_id VARCHAR(100) NULL,
+  notes TEXT NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_orders_product (product_id),
+  KEY idx_orders_book (book_id),
+  KEY idx_orders_student (student_id),
+  CONSTRAINT fk_orders_product FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE SET NULL,
+  CONSTRAINT fk_orders_book FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE SET NULL,
+  CONSTRAINT fk_orders_student FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Cart
+CREATE TABLE IF NOT EXISTS carts (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  student_id BIGINT UNSIGNED NULL,
+  book_id BIGINT UNSIGNED NULL,
+  product_id BIGINT UNSIGNED NULL,
+  quantity INT DEFAULT 1,
+  price DECIMAL(10,2) DEFAULT 0,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_carts_student (student_id),
+  KEY idx_carts_book (book_id),
+  KEY idx_carts_product (product_id),
+  CONSTRAINT fk_carts_student FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE SET NULL,
+  CONSTRAINT fk_carts_book FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE SET NULL,
+  CONSTRAINT fk_carts_product FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Discussions
+CREATE TABLE IF NOT EXISTS discussions (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  product_id BIGINT UNSIGNED NULL,
+  student_id BIGINT UNSIGNED NULL,
+  commentaire TEXT NULL,
+  is_approved TINYINT(1) DEFAULT 0,
+  approved_at TIMESTAMP NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_discussions_product (product_id),
+  KEY idx_discussions_student (student_id),
+  CONSTRAINT fk_discussions_product FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE SET NULL,
+  CONSTRAINT fk_discussions_student FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Response Discussions
+CREATE TABLE IF NOT EXISTS response_discussions (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  discussion_id BIGINT UNSIGNED NOT NULL,
+  admin_id BIGINT UNSIGNED NULL,
+  reponse TEXT NULL,
+  is_approved TINYINT(1) DEFAULT 0,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_rd_discussion (discussion_id),
+  KEY idx_rd_admin (admin_id),
+  CONSTRAINT fk_rd_discussion FOREIGN KEY (discussion_id) REFERENCES discussions(id) ON DELETE CASCADE
+  -- admin_id references users(id) typically
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Course Ratings
+CREATE TABLE IF NOT EXISTS course_ratings (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  product_id BIGINT UNSIGNED NULL,
+  student_id BIGINT UNSIGNED NULL,
+  rating INT NOT NULL,
+  commentaire TEXT NULL,
+  is_approved TINYINT(1) DEFAULT 0,
+  approved_at TIMESTAMP NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_cr_product (product_id),
+  KEY idx_cr_student (student_id),
+  CONSTRAINT fk_cr_product FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE SET NULL,
+  CONSTRAINT fk_cr_student FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- (moved Books table above Orders)
+
+-- Pages
+CREATE TABLE IF NOT EXISTS pages (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  titre_ar VARCHAR(255) NULL,
+  titre_en VARCHAR(255) NULL,
+  meta_title_ar VARCHAR(255) NULL,
+  meta_title_en VARCHAR(255) NULL,
+  description_ar TEXT NULL,
+  description_en TEXT NULL,
+  slug VARCHAR(255) UNIQUE,
+  is_active TINYINT(1) DEFAULT 1,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Blogs
+CREATE TABLE IF NOT EXISTS blogs (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  titre_ar VARCHAR(255) NOT NULL,
+  titre_en VARCHAR(255) NOT NULL,
+  meta_title_ar VARCHAR(255) NOT NULL,
+  meta_title_en VARCHAR(255) NOT NULL,
+  description_ar TEXT NOT NULL,
+  description_en TEXT NOT NULL,
+  description_short_ar TEXT NULL,
+  description_short_en TEXT NULL,
+  slug VARCHAR(255) UNIQUE,
+  image VARCHAR(255) NULL,
+  author_ar VARCHAR(255) NULL,
+  author_en VARCHAR(255) NULL,
+  published_date DATE NULL,
+  is_active TINYINT(1) DEFAULT 1,
+  views_count INT DEFAULT 0,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Articles
+CREATE TABLE IF NOT EXISTS articles (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  titre_ar VARCHAR(255) NOT NULL,
+  titre_en VARCHAR(255) NOT NULL,
+  meta_title_ar VARCHAR(255) NOT NULL,
+  meta_title_en VARCHAR(255) NOT NULL,
+  description_ar TEXT NOT NULL,
+  description_en TEXT NOT NULL,
+  description_short_ar TEXT NULL,
+  description_short_en TEXT NULL,
+  slug VARCHAR(255) UNIQUE,
+  image VARCHAR(255) NULL,
+  author_ar VARCHAR(255) NULL,
+  author_en VARCHAR(255) NULL,
+  published_date DATE NULL,
+  is_active TINYINT(1) DEFAULT 1,
+  views_count INT DEFAULT 0,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Quizzes types
+CREATE TABLE IF NOT EXISTS type_quizzes (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  titre VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Quizzes
+CREATE TABLE IF NOT EXISTS quizzes (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name_ar VARCHAR(255) NOT NULL,
+  name_en VARCHAR(255) NOT NULL,
+  score INT NOT NULL,
+  type_id BIGINT UNSIGNED NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_quizzes_type (type_id),
+  CONSTRAINT fk_quizzes_type FOREIGN KEY (type_id) REFERENCES type_quizzes(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Quiz products (pivot)
+CREATE TABLE IF NOT EXISTS quiz_products (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  product_id BIGINT UNSIGNED NOT NULL,
+  quiz_id BIGINT UNSIGNED NOT NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  UNIQUE KEY uniq_quiz_product (product_id, quiz_id),
+  KEY idx_qp_quiz (quiz_id),
+  CONSTRAINT fk_qp_product FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
+  CONSTRAINT fk_qp_quiz FOREIGN KEY (quiz_id) REFERENCES quizzes(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Questions
+CREATE TABLE IF NOT EXISTS questions (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name_ar TEXT NOT NULL,
+  name_en TEXT NOT NULL,
+  point INT NOT NULL,
+  quiz_id BIGINT UNSIGNED NOT NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_questions_quiz (quiz_id),
+  CONSTRAINT fk_questions_quiz FOREIGN KEY (quiz_id) REFERENCES quizzes(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Reponse Questions
+CREATE TABLE IF NOT EXISTS reponse_questions (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  titre_ar VARCHAR(255) NOT NULL,
+  titre_en VARCHAR(255) NOT NULL,
+  question_id BIGINT UNSIGNED NOT NULL,
+  is_correcte TINYINT(1) DEFAULT 0,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_rq_question (question_id),
+  CONSTRAINT fk_rq_question FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Resultat Quiz
+CREATE TABLE IF NOT EXISTS resultat_quizzes (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  student_id BIGINT UNSIGNED NOT NULL,
+  product_id BIGINT UNSIGNED NOT NULL,
+  quiz_id BIGINT UNSIGNED NOT NULL,
+  score INT NULL,
+  success TINYINT(1) DEFAULT 0,
+  attempts INT DEFAULT 0,
+  blocked_until TIMESTAMP NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_rz_student (student_id),
+  KEY idx_rz_product (product_id),
+  KEY idx_rz_quiz (quiz_id),
+  CONSTRAINT fk_rz_student FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE,
+  CONSTRAINT fk_rz_product FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
+  CONSTRAINT fk_rz_quiz FOREIGN KEY (quiz_id) REFERENCES quizzes(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Response Quiz
+CREATE TABLE IF NOT EXISTS response_quizzes (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  product_id BIGINT UNSIGNED NOT NULL,
+  student_id BIGINT UNSIGNED NOT NULL,
+  quiz_id BIGINT UNSIGNED NOT NULL,
+  question_id BIGINT UNSIGNED NOT NULL,
+  response_id BIGINT UNSIGNED NOT NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_rpq_product (product_id),
+  KEY idx_rpq_student (student_id),
+  KEY idx_rpq_quiz (quiz_id),
+  KEY idx_rpq_question (question_id),
+  KEY idx_rpq_response (response_id),
+  CONSTRAINT fk_rpq_product FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
+  CONSTRAINT fk_rpq_student FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE,
+  CONSTRAINT fk_rpq_quiz FOREIGN KEY (quiz_id) REFERENCES quizzes(id) ON DELETE CASCADE,
+  CONSTRAINT fk_rpq_question FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE,
+  CONSTRAINT fk_rpq_response FOREIGN KEY (response_id) REFERENCES reponse_questions(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Product Accueil
+CREATE TABLE IF NOT EXISTS products_acceuil (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  product_id BIGINT UNSIGNED NOT NULL,
+  is_active TINYINT(1) DEFAULT 1,
+  `order` INT DEFAULT 0,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_pa_product (product_id),
+  CONSTRAINT fk_pa_product FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- About Accueil
+CREATE TABLE IF NOT EXISTS about_acceuil (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  description_en TEXT NULL,
+  description_ar TEXT NULL,
+  is_active TINYINT(1) DEFAULT 1,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Avis Accueil
+CREATE TABLE IF NOT EXISTS avis_acceuil (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  client VARCHAR(255) NULL,
+  image VARCHAR(255) NULL,
+  avis_en TEXT NULL,
+  avis_ar TEXT NULL,
+  is_active TINYINT(1) DEFAULT 1,
+  `order` INT DEFAULT 0,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Carousels
+CREATE TABLE IF NOT EXISTS carousels (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  slug_ar VARCHAR(255) NULL,
+  slug_en VARCHAR(255) NULL,
+  description_ar TEXT NULL,
+  description_en TEXT NULL,
+  image VARCHAR(255) NULL,
+  is_active TINYINT(1) DEFAULT 1,
+  `order` INT DEFAULT 0,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Certif Students
+CREATE TABLE IF NOT EXISTS certif_students (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  student_id BIGINT UNSIGNED NULL,
+  product_id BIGINT UNSIGNED NULL,
+  certif_id BIGINT UNSIGNED NULL,
+  student_success_id BIGINT UNSIGNED NULL,
+  serial_number VARCHAR(100) NULL,
+  file_path VARCHAR(255) NULL,
+  generated_at TIMESTAMP NULL,
+  is_valid TINYINT(1) DEFAULT 0,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_cs_student (student_id),
+  KEY idx_cs_product (product_id),
+  KEY idx_cs_certif (certif_id)
+  -- Add FKs as needed to students/products/certifs
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- Student Stage Courses
+CREATE TABLE IF NOT EXISTS student_stage_courses (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  student_id BIGINT UNSIGNED NULL,
+  product_id BIGINT UNSIGNED NULL,
+  file1 VARCHAR(255) NULL,
+  file2 VARCHAR(255) NULL,
+  description TEXT NULL,
+  is_valid INT DEFAULT 0,
+  admin_notes TEXT NULL,
+  submitted_at TIMESTAMP NULL,
+  validated_at TIMESTAMP NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_ssc_student (student_id),
+  KEY idx_ssc_product (product_id),
+  CONSTRAINT fk_ssc_student FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE SET NULL,
+  CONSTRAINT fk_ssc_product FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Student Video Exams
+CREATE TABLE IF NOT EXISTS student_video_exams (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  student_id BIGINT UNSIGNED NULL,
+  product_id BIGINT UNSIGNED NULL,
+  lien VARCHAR(255) NULL,
+  video_description TEXT NULL,
+  is_valid INT DEFAULT 0,
+  submitted_at TIMESTAMP NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_sve_student (student_id),
+  KEY idx_sve_product (product_id),
+  CONSTRAINT fk_sve_student FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE SET NULL,
+  CONSTRAINT fk_sve_product FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Student Successes
+CREATE TABLE IF NOT EXISTS student_successes (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  product_id BIGINT UNSIGNED NULL,
+  student_id BIGINT UNSIGNED NULL,
+  lien_video VARCHAR(255) NULL,
+  success INT DEFAULT 0,
+  admin_notes TEXT NULL,
+  submitted_at TIMESTAMP NULL,
+  validated_at TIMESTAMP NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  KEY idx_ss_product (product_id),
+  KEY idx_ss_student (student_id),
+  CONSTRAINT fk_ss_product FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE SET NULL,
+  CONSTRAINT fk_ss_student FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+

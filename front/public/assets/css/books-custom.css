@@ -1,0 +1,1261 @@
+/* Books Custom Styles */
+
+
+/* Sidebar Search */
+
+.sidebar-search .form-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-search .form-input input {
+    flex: 1;
+    padding: 15px 50px 15px 20px;
+    border: 1px solid #e1e5e9;
+    border-radius: 12px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-search .form-input input:focus {
+    border-color: #3554d1;
+    box-shadow: 0 0 0 3px rgba(53, 84, 209, 0.1);
+    outline: none;
+}
+
+.sidebar-search .form-input button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: #3554d1;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.sidebar-search .form-input button:hover {
+    background: #2a43a8;
+    transform: translateY(-50%) scale(1.05);
+}
+
+
+/* Price Filter */
+
+.sidebar-price-filter input {
+    padding: 12px 16px;
+    border: 1px solid #e1e5e9;
+    border-radius: 10px;
+    font-size: 14px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.sidebar-price-filter input:focus {
+    border-color: #3554d1;
+    box-shadow: 0 0 0 3px rgba(53, 84, 209, 0.1);
+    outline: none;
+}
+
+
+/* Book Cards - Improved Padding and Spacing */
+
+.coursesCard.-type-1 {
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f0f0f0;
+}
+
+
+/* Book Card Link Styles */
+
+.book-card-link {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: block;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.book-card-link:hover {
+    text-decoration: none !important;
+    color: inherit !important;
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.book-card-link:hover .coursesCard.-type-1 {
+    border-color: #3554d1;
+}
+
+.coursesCard.-type-1:hover {
+    transform: none;
+    /* Remove transform from inner element since parent handles it */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    border-color: #3554d1;
+}
+
+.coursesCard__image {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+.coursesCard__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.coursesCard.-type-1:hover .coursesCard__image img {
+    transform: scale(1.08);
+}
+
+
+/* Card Content with Better Padding */
+
+.coursesCard.-type-1 .h-100.pt-15 {
+    padding: 25px 20px 20px 20px !important;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.coursesCard.-type-1 .text-17.lh-15.fw-500.text-dark-1.mt-10 {
+    margin-top: 0 !important;
+    margin-bottom: 12px;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.coursesCard.-type-1 .text-14.lh-1.text-light-1.mt-10 {
+    margin-top: 0 !important;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    color: #666;
+    flex: 1;
+}
+
+.coursesCard-footer {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 20px;
+}
+
+.coursesCard-footer__price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #3554d1;
+    text-align: center;
+}
+
+
+/* Promotion Styles */
+
+.coursesCard-footer__price .text-green-1 {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    display: inline-block;
+    animation: pulse-promo 2s infinite;
+}
+
+@keyframes pulse-promo {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+}
+
+
+/* Badge promotion sur l'image */
+
+.coursesCard .absolute-full-center .bg-green-1 {
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    border: 2px solid white;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+    animation: bounce-promo 2s infinite;
+}
+
+@keyframes bounce-promo {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-5px);
+    }
+    60% {
+        transform: translateY(-3px);
+    }
+}
+
+
+/* Hover effect pour les promotions */
+
+.book-card-link:hover .coursesCard-footer__price .text-green-1 {
+    background: linear-gradient(135deg, #059669, #047857);
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(16, 185, 129, 0.5);
+}
+
+.book-card-link:hover .coursesCard .absolute-full-center .bg-green-1 {
+    background: linear-gradient(135deg, #059669, #047857) !important;
+    transform: translateY(-2px) scale(1.1);
+}
+
+
+/* Book Detail Page - Enhanced Spacing */
+
+.book-detail-image {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.book-detail-info {
+    padding: 30px;
+}
+
+.book-detail-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.book-detail-description {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.book-detail-price {
+    font-size: 28px;
+    font-weight: 700;
+    color: #3554d1;
+    margin-bottom: 30px;
+}
+
+.book-detail-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.book-detail-buttons .button {
+    padding: 16px 28px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.book-detail-buttons .button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.book-detail-meta {
+    padding: 25px 0;
+    border-top: 1px solid #f0f0f0;
+}
+
+.book-detail-meta-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px 0;
+}
+
+.book-detail-meta-item:last-child {
+    margin-bottom: 0;
+}
+
+.book-detail-meta-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+    color: #3554d1;
+}
+
+.book-detail-meta-label {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.book-detail-meta-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+
+/* Related Books - Better Spacing */
+
+.related-books-item {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 15px;
+    border: 1px solid #f0f0f0;
+    background: white;
+}
+
+.related-books-item:hover {
+    background-color: #f8f9fa;
+    transform: translateX(8px);
+    border-color: #3554d1;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.related-books-image {
+    width: 70px;
+    height: 90px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-right: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.related-books-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.related-books-info {
+    flex: 1;
+}
+
+.related-books-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.related-books-price {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+
+/* Sidebar Improvements */
+
+.sidebar.-courses {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f0f0f0;
+}
+
+.sidebar__item {
+    margin-bottom: 25px;
+}
+
+.sidebar__item:last-child {
+    margin-bottom: 0;
+}
+
+.sidebar__title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .book-detail-title {
+        font-size: 26px;
+    }
+    .book-detail-price {
+        font-size: 24px;
+    }
+    .book-detail-buttons {
+        flex-direction: column;
+    }
+    .coursesCard__image {
+        height: 180px;
+    }
+    .coursesCard.-type-1 .h-100.pt-15 {
+        padding: 20px 15px 15px 15px !important;
+    }
+    .sidebar.-courses {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+}
+
+
+/* RTL Support */
+
+[dir="rtl"] .sidebar-search .form-input input {
+    padding: 15px 20px 15px 50px;
+}
+
+[dir="rtl"] .sidebar-search .form-input button {
+    right: auto;
+    left: 8px;
+}
+
+[dir="rtl"] .related-books-image {
+    margin-right: 0;
+    margin-left: 20px;
+}
+
+[dir="rtl"] .book-detail-meta-icon {
+    margin-right: 0;
+    margin-left: 15px;
+}
+
+[dir="rtl"] .related-books-item:hover {
+    transform: translateX(-8px);
+}
+
+
+/* Cart Styles */
+
+.cart-items {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.cart-item {
+    border-bottom: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item:hover {
+    background: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item .card {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+}
+
+.cart-item .card-body {
+    padding: 25px !important;
+}
+
+.cart-item-image img {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.cart-item:hover .cart-item-image img {
+    transform: scale(1.05);
+}
+
+.cart-item-info h4 a {
+    color: #2d3748;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.cart-item-info h4 a:hover {
+    color: #3554d1;
+}
+
+.cart-item-quantity select {
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    background: white;
+    transition: all 0.3s ease;
+    min-width: 80px;
+}
+
+.cart-item-quantity select:focus {
+    border-color: #3554d1;
+    box-shadow: 0 0 0 3px rgba(53, 84, 209, 0.1);
+    outline: none;
+}
+
+.cart-summary {
+    position: sticky;
+    top: 20px;
+}
+
+.cart-summary .card {
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.cart-summary .card-header {
+    background: linear-gradient(135deg, #3554d1, #667eea);
+    color: white;
+    padding: 20px;
+    border: none;
+}
+
+.cart-summary .card-body {
+    padding: 25px;
+}
+
+.cart-summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.cart-summary-item:last-child {
+    border-bottom: none;
+}
+
+.cart-summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-top: 2px solid #e2e8f0;
+    margin-top: 10px;
+}
+
+.cart-summary-actions .button {
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.cart-summary-actions .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Add to Cart Form */
+
+.add-to-cart-form {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    border: none;
+}
+
+.add-to-cart-form .form-group {
+    margin-bottom: 0;
+}
+
+.add-to-cart-form select {
+    padding: 12px 16px;
+    border: 1px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    width: 100%;
+    background: white;
+}
+
+.add-to-cart-form select:focus {
+    border-color: #3554d1;
+    box-shadow: 0 0 0 3px rgba(53, 84, 209, 0.1);
+    outline: none;
+}
+
+.add-to-cart-form .button {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    padding: 12px 20px;
+    height: auto;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-to-cart-form .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Alert Styles */
+
+.alert {
+    border-radius: 12px;
+    border: none;
+    padding: 15px 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+
+/* Empty Cart */
+
+.icon-shopping-cart {
+    opacity: 0.3;
+}
+
+
+/* Responsive Cart */
+
+@media (max-width: 768px) {
+    .cart-items {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+    .cart-item .row {
+        text-align: center;
+    }
+    .cart-item-image {
+        margin-bottom: 15px;
+    }
+    .cart-item-info {
+        margin-bottom: 15px;
+    }
+    .cart-item-quantity {
+        margin-bottom: 15px;
+    }
+    .cart-summary {
+        position: static;
+    }
+    .add-to-cart-form {
+        padding: 15px;
+    }
+    .add-to-cart-form .row {
+        flex-direction: column;
+    }
+    .add-to-cart-form .col-md-4,
+    .add-to-cart-form .col-md-8 {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .add-to-cart-form .button {
+        margin-top: 0 !important;
+    }
+}
+
+
+/* RTL Cart Support */
+
+[dir="rtl"] .cart-summary-item,
+[dir="rtl"] .cart-summary-total {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .cart-item-actions {
+    text-align: center;
+}
+
+[dir="rtl"] .add-to-cart-form .row {
+    flex-direction: row-reverse;
+}
+
+
+/* Header Cart Icon - Specific Styles */
+
+.header-right__icons {
+    align-items: center;
+    gap: 20px;
+}
+
+.header-right__icons .ml-20 {
+    margin-left: 20px;
+}
+
+.header-right__icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    min-width: 40px;
+    min-height: 40px;
+}
+
+.header-right__icons a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.header-right__icons .icon-basket {
+    font-size: 18px;
+    color: white;
+    line-height: 1;
+}
+
+
+/* Cart Badge */
+
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+    animation: pulse-cart 2s infinite;
+    z-index: 10;
+}
+
+@keyframes pulse-cart {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.6);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+    }
+}
+
+
+/* RTL Cart Badge */
+
+[dir="rtl"] .cart-badge {
+    right: auto;
+    left: -5px;
+}
+
+
+/* Cart Item Improvements */
+
+.cart-item .row {
+    align-items: center;
+    min-height: 120px;
+}
+
+.cart-item-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-item-info {
+    padding: 0 15px;
+}
+
+.cart-item-quantity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart-item-quantity label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.cart-item-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-item-actions .button {
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    border: none;
+    font-weight: 600;
+}
+
+.cart-item-actions .button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+
+/* Empty Cart State */
+
+.icon-shopping-cart {
+    opacity: 0.3;
+    font-size: 80px;
+    color: #cbd5e0;
+}
+
+
+/* Responsive Cart */
+
+@media (max-width: 768px) {
+    .cart-item .row {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .cart-item-image {
+        margin-bottom: 15px;
+    }
+    .cart-item-info {
+        padding: 0;
+        margin-bottom: 15px;
+    }
+    .cart-item-quantity {
+        margin-bottom: 15px;
+    }
+    .cart-summary {
+        margin-top: 30px;
+    }
+}
+
+
+/* RTL Cart Support */
+
+[dir="rtl"] .cart-summary-item,
+[dir="rtl"] .cart-summary-total {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .cart-item-actions {
+    text-align: center;
+}
+
+[dir="rtl"] .add-to-cart-form .row {
+    flex-direction: row-reverse;
+}
+
+
+/* Checkout Form Styles */
+
+.shopCheckout-form .contact-form input,
+.shopCheckout-form .contact-form select,
+.shopCheckout-form .contact-form textarea {
+    background: white;
+    border: 1px solid #e1e5e9;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #2d3748;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.shopCheckout-form .contact-form input:focus,
+.shopCheckout-form .contact-form select:focus,
+.shopCheckout-form .contact-form textarea:focus {
+    border-color: #3554d1;
+    box-shadow: 0 0 0 3px rgba(53, 84, 209, 0.1);
+    outline: none;
+    background: white;
+}
+
+.shopCheckout-form .contact-form select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    padding-right: 40px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.shopCheckout-form .contact-form select option {
+    background: white;
+    color: #2d3748;
+    padding: 8px 12px;
+}
+
+.shopCheckout-form .contact-form select option:hover {
+    background: #f7fafc;
+}
+
+
+/* Selectize Override */
+
+.selectize-control.single .selectize-input {
+    background: white !important;
+    border: 1px solid #e1e5e9 !important;
+    border-radius: 8px !important;
+    color: #2d3748 !important;
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+    box-shadow: none !important;
+}
+
+.selectize-control.single .selectize-input.focus {
+    border-color: #3554d1 !important;
+    box-shadow: 0 0 0 3px rgba(53, 84, 209, 0.1) !important;
+}
+
+.selectize-control.single .selectize-input input {
+    color: #2d3748 !important;
+    background: transparent !important;
+}
+
+.selectize-dropdown {
+    background: white !important;
+    border: 1px solid #e1e5e9 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.selectize-dropdown .option {
+    color: #2d3748 !important;
+    padding: 8px 16px !important;
+}
+
+.selectize-dropdown .option.active {
+    background: #3554d1 !important;
+    color: white !important;
+}
+
+.selectize-dropdown .option:hover {
+    background: #f7fafc !important;
+    color: #2d3748 !important;
+}
+
+
+/* RTL Checkout Support */
+
+[dir="rtl"] .shopCheckout-form .contact-form select {
+    background-position: left 12px center;
+    padding-left: 40px;
+    padding-right: 16px;
+}
+
+
+/* Advanced Filters Styles */
+
+.sidebar-checkbox {
+    margin-top: 15px;
+}
+
+.sidebar-checkbox__item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sidebar-checkbox__item:hover {
+    background: rgba(53, 84, 209, 0.05);
+    border-radius: 6px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.sidebar-checkbox__title {
+    flex: 1;
+    font-size: 14px;
+    color: #2d3748;
+    margin-left: 10px;
+}
+
+.sidebar-checkbox__count {
+    font-size: 12px;
+    color: #718096;
+    font-weight: 500;
+}
+
+
+/* Form Checkbox Styles */
+
+.form-checkbox {
+    position: relative;
+    display: inline-block;
+}
+
+.form-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.form-checkbox__mark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #e2e8f0;
+    border-radius: 4px;
+    background: white;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-checkbox input[type="checkbox"]:checked+.form-checkbox__mark {
+    background: #3554d1;
+    border-color: #3554d1;
+}
+
+.form-checkbox__icon {
+    color: white;
+    font-size: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.form-checkbox input[type="checkbox"]:checked+.form-checkbox__mark .form-checkbox__icon {
+    opacity: 1;
+}
+
+
+/* Form Radio Styles */
+
+.form-radio {
+    position: relative;
+    display: inline-block;
+}
+
+.radio {
+    position: relative;
+    display: inline-block;
+}
+
+.radio input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio__mark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #e2e8f0;
+    border-radius: 50%;
+    background: white;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radio input[type="radio"]:checked+.radio__mark {
+    border-color: #3554d1;
+}
+
+.radio__icon {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #3554d1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.radio input[type="radio"]:checked+.radio__mark .radio__icon {
+    opacity: 1;
+}
+
+
+/* Sort Select Styles */
+
+.form-select {
+    background: white;
+    border: 1px solid #e1e5e9;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #2d3748;
+    transition: all 0.3s ease;
+    min-width: 150px;
+}
+
+.form-select:focus {
+    border-color: #3554d1;
+    box-shadow: 0 0 0 3px rgba(53, 84, 209, 0.1);
+    outline: none;
+}
+
+
+/* Filter Button Styles */
+
+.sidebar-price-filter .button {
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.sidebar-price-filter .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(53, 84, 209, 0.3);
+}
+
+
+/* RTL Filter Support */
+
+[dir="rtl"] .sidebar-checkbox__item:hover {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+[dir="rtl"] .sidebar-checkbox__title {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+[dir="rtl"] .form-radio.mr-10 {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+
+/* Book Detail Page Styles */
+
+.book-image-wrapper {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.book-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.book-badge.paid {
+    background: #6366f1;
+    color: white;
+}
+
+.book-badge.free {
+    background: #10b981;
+    color: white;
+}
+
+.book-info {
+    padding: 20px 0;
+}
+
+.book-meta {
+    background: #f8fafc;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.meta-item {
+    margin-bottom: 15px;
+}
+
+.meta-label {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.meta-value {
+    font-size: 16px;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.book-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.book-description {
+    background: #f8fafc;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+
+/* RTL Support for Book Detail */
+
+[dir="rtl"] .book-badge {
+    right: auto;
+    left: 15px;
+}
+
+[dir="rtl"] .book-actions {
+    flex-direction: row-reverse;
+}

@@ -1,0 +1,348 @@
+/* Custom Form Styles */
+
+
+/* Tab Navigation */
+
+.nav-tabs .nav-link {
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: #6c757d;
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    border-bottom-color: #dee2e6;
+    color: #495057;
+}
+
+.nav-tabs .nav-link.active {
+    border-bottom-color: #007bff;
+    color: #007bff;
+    background: none;
+}
+
+
+/* Card Styles */
+
+.card {
+    border: 1px solid #e3e6f0;
+    border-radius: 0.35rem;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+}
+
+.card-header {
+    background-color: #f8f9fc;
+    border-bottom: 1px solid #e3e6f0;
+    padding: 1rem 1.25rem;
+}
+
+
+/* Form Controls */
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #bac8f3;
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+}
+
+.form-control.is-invalid {
+    border-color: #e74a3b;
+    box-shadow: 0 0 0 0.2rem rgba(231, 74, 59, 0.25);
+}
+
+
+/* Student Rows */
+
+.student-row {
+    background-color: #f8f9fc;
+    border: 1px solid #e3e6f0 !important;
+    transition: all 0.3s ease;
+}
+
+.student-row:hover {
+    background-color: #eaecf4;
+    border-color: #bac8f3 !important;
+}
+
+
+/* Button Styles */
+
+.btn {
+    border-radius: 0.35rem;
+    font-weight: 500;
+    padding: 0.375rem 0.75rem;
+    transition: all 0.15s ease-in-out;
+}
+
+.btn-primary {
+    background-color: #4e73df;
+    border-color: #4e73df;
+}
+
+.btn-primary:hover {
+    background-color: #2e59d9;
+    border-color: #2653d4;
+}
+
+.btn-success {
+    background-color: #1cc88a;
+    border-color: #1cc88a;
+}
+
+.btn-success:hover {
+    background-color: #17a673;
+    border-color: #169b6b;
+}
+
+.btn-danger {
+    background-color: #e74a3b;
+    border-color: #e74a3b;
+}
+
+.btn-danger:hover {
+    background-color: #e02e1e;
+    border-color: #d52a1e;
+}
+
+
+/* Navigation Buttons */
+
+#prevTab:disabled,
+#nextTab:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+/* CKEditor Customization */
+
+.ck-editor__editable {
+    min-height: 200px;
+    max-height: 400px;
+}
+
+.ck-editor__editable[dir="rtl"] {
+    text-align: right;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .nav-tabs .nav-link {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+    }
+    .card-body {
+        padding: 1rem;
+    }
+    .student-row .col-md-1,
+    .student-row .col-md-2,
+    .student-row .col-md-3 {
+        margin-bottom: 0.5rem;
+    }
+}
+
+
+/* Animation for new elements */
+
+.student-row {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Modern Alert Styles */
+
+.modern-alert {
+    border: none;
+    border-radius: 0.35rem;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid #e74a3b;
+}
+
+
+/* Page Header */
+
+.page-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    border-radius: 0.35rem;
+}
+
+.page-title {
+    margin: 0;
+    font-weight: 700;
+}
+
+.page-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+
+/* Avatar Styles */
+
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
+.avatar-lg {
+    width: 4rem;
+    height: 4rem;
+}
+
+
+/* Feather Icons */
+
+[data-feather] {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+}
+
+/* Toast Styles */
+.toast {
+    min-width: 300px;
+    max-width: 400px;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.toast.bg-success {
+    background-color: #198754 !important;
+}
+
+.toast.bg-danger {
+    background-color: #dc3545 !important;
+}
+
+.toast.bg-warning {
+    background-color: #ffc107 !important;
+    color: #000 !important;
+}
+
+.toast.bg-info {
+    background-color: #0dcaf0 !important;
+}
+
+.toast .toast-body {
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+}
+
+.toast .btn-close {
+    filter: brightness(0) invert(1);
+}
+
+/* Validation Styles */
+.form-control.is-valid,
+.form-select.is-valid {
+    border-color: #198754;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='m2.3 6.73.94-.94 2.89 2.89 2.89-2.89.94.94L4.12 9.61z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.form-control.is-invalid,
+.form-select.is-invalid {
+    border-color: #dc3545;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath d='m5.8 4.6 1.4 1.4M7.2 4.6l-1.4 1.4'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+/* CKEditor Validation Styles */
+.ck-editor.border-danger {
+    border: 2px solid #dc3545 !important;
+    border-radius: 0.375rem;
+}
+
+.ck-editor.border-danger .ck-editor__main {
+    border-color: #dc3545 !important;
+}
+
+/* Animation pour les toasts */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.toast {
+    animation: slideInRight 0.3s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .toast {
+        min-width: 280px;
+        max-width: 350px;
+    }
+    
+    .toast .toast-body {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* Loading State */
+.btn-loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    margin: auto;
+    border: 2px solid transparent;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

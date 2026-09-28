@@ -1,0 +1,561 @@
+/* Course Cards - Inspired by Book Cards */
+.packageCard {
+  background: white;
+  border-radius: 16px;
+  overflow: visible;
+  box-shadow: 0 4px 20px rgba(0, 113, 174, 0.12);
+  border: 2px solid #e8f4f9;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-decoration: none !important;
+  color: inherit !important;
+  cursor: pointer;
+  user-select: none;
+}
+
+.packageCard:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 50px rgba(0, 113, 174, 0.25);
+  border-color: #0071ae;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.packageCard__image {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+  background: transparent !important;
+  border-radius: 16px 16px 0 0;
+}
+
+.packageCard__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #ffffff !important;
+}
+
+.packageCard:hover .packageCard__image img {
+  transform: scale(1.1) rotate(1deg);
+}
+
+.packageCard__image_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 113, 174, 0.15) 100%);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.packageCard:hover .packageCard__image_overlay {
+  opacity: 1;
+}
+
+.package-card-badge {
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  z-index: 10;
+  background-color: #0071ae !important;
+  padding: 10px 18px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.package-card-badge span {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+[dir="rtl"] .package-card-badge {
+  left: auto;
+  right: 15px;
+}
+
+/* Ensure package card is clickable */
+.packageCard {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.packageCard * {
+  pointer-events: none;
+}
+
+.packageCard a {
+  pointer-events: auto;
+}
+
+.packageCard__content {
+  padding: 30px 25px 25px 25px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+.packageCard__title {
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+  margin-top: 0;
+  transition: color 0.3s ease;
+}
+
+.packageCard:hover .packageCard__title {
+  color: #0071ae;
+}
+
+.packageCard__description {
+  margin-bottom: 20px;
+  line-height: 1.6;
+  color: #555;
+  flex: 1;
+  font-size: 14px;
+}
+
+.packageCard__meta {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.packageCard__meta-item {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #666;
+  font-weight: 500;
+}
+
+.packageCard__meta-item .icon {
+  margin-right: 6px;
+  color: #0071ae;
+  font-size: 16px;
+}
+
+.packageCard-footer {
+  margin-top: auto;
+  padding-top: 25px;
+  border-top: 2px solid #e8f4f9;
+}
+
+.packageCard-footer__price {
+  text-align: center;
+  text-decoration: none !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 110px;
+}
+
+.packageCard-footer__price .price-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.packageCard-footer__price .price-original {
+  font-size: 16px;
+  color: #999;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
+.packageCard-footer__price .price-discounted {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0071ae;
+  letter-spacing: -0.5px;
+}
+
+.packageCard-footer__price .price-single {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0071ae;
+  letter-spacing: -0.5px;
+}
+
+.packageCard-footer__price .price-savings {
+  display: inline-block;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+  margin-top: 8px;
+}
+
+/* Package Info Card Styles */
+.packageInfoCard {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 20px;
+  border: 1px solid #e9ecef;
+}
+
+.packageInfoCard__image {
+  height: 250px;
+  overflow: hidden;
+}
+
+.packageInfoCard__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.packageInfoCard__content {
+  padding: 20px;
+  background: #fff;
+}
+
+.packageStats {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.packageStats__item {
+  text-align: center;
+  flex: 1;
+}
+
+.packagePrice {
+  text-align: center;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+/* Course List Item Styles */
+.courseListItem {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+  border: 1px solid #e9ecef;
+}
+
+.courseListItem:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.courseListItem__image {
+  width: 80px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.courseListItem__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.courseListItem__content {
+  flex: 1;
+  margin-right: 15px;
+}
+
+.courseListItem__price {
+  text-align: center;
+  margin-right: 15px;
+  min-width: 80px;
+}
+
+.courseListItem__action {
+  flex-shrink: 0;
+}
+
+/* Alert Debug Styles */
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .packageCard__image {
+    height: 180px;
+  }
+
+  .packageCard__content {
+    padding: 20px 15px 15px 15px;
+  }
+
+  .packageCard__title {
+    font-size: 16px;
+  }
+
+  .packageCard__description {
+    font-size: 13px;
+  }
+
+  .packageCard__meta {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .courseListItem {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .courseListItem__image {
+    width: 100%;
+    height: 120px;
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .courseListItem__content {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .courseListItem__price {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .packageStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .packageInfoCard {
+    position: static;
+    margin-bottom: 30px;
+  }
+}
+
+/* Icon Styles */
+.icon-percent::before {
+  content: "%";
+  font-weight: bold;
+}
+
+/* Animation Classes */
+[data-anim-child] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+[data-anim-child].animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delay Classes */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+
+/* Force white background for package cards */
+.packageCard,
+.packageCard * {
+  background-color: #fff !important;
+}
+
+.packageCard__image_overlay {
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.1) 100%) !important;
+}
+
+/* Course Cards will use the existing filter-custom.css styles */
+
+/* Package Detail Page - Book Style */
+.book-image-wrapper {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.book-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.book-badge.paid {
+  background: #6366f1;
+  color: white;
+}
+
+.book-badge.free {
+  background: #10b981;
+  color: white;
+}
+
+.book-info {
+  padding: 20px 0;
+}
+
+.book-meta {
+  background: #f8fafc;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.meta-item {
+  margin-bottom: 15px;
+}
+
+.meta-item:last-child {
+  margin-bottom: 0;
+}
+
+.meta-label {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.meta-value {
+  font-size: 16px;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.book-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.book-description {
+  background: #f8fafc;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+/* Enhanced Package Price Display with Discount */
+.packageCard-footer__price .price-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.packageCard-footer__price .price-original {
+  font-size: 13px;
+  color: #b0b0b0;
+  text-decoration: line-through;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+}
+
+.packageCard-footer__price .price-discounted {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0071ae;
+  position: relative;
+  letter-spacing: -0.5px;
+}
+
+/* Marketing Section - Highlight Discount */
+.packageCard:has(.price-display) {
+  position: relative;
+  border: 2px solid #0071ae;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.packageCard:has(.price-display)::after {
+  content: "Limited Offer";
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  background: #FCD116;
+  color: #1a1a1a;
+  padding: 5px 14px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(252, 209, 22, 0.25);
+  border: 2px solid white;
+}
+
+.packageCard:has(.price-display):hover {
+  border-color: #0071ae;
+  background: linear-gradient(135deg, #f8fafc 0%, #f0f4fb 100%);
+}
+
+.packageCard-footer {
+  text-align: center;
+}
+
+/* Savings indicator - Secondary color highlight */
+.price-savings {
+  display: inline-block;
+  background: #FCD116;
+  color: #1a1a1a;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(252, 209, 22, 0.2);
+}
+

@@ -1,0 +1,98 @@
+*.log
+.DS_Store
+.env
+.env.backup
+.env.production
+.phpactor.json
+.phpunit.result.cache
+/.fleet
+/.idea
+/.nova
+/.phpunit.cache
+/.vscode
+/.zed
+/auth.json
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/vendor
+Homestead.json
+Homestead.yaml
+Thumbs.db
+
+# Laravel Storage
+/storage/logs/*.log
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+!/storage/framework/cache/.gitignore
+!/storage/framework/sessions/.gitignore
+!/storage/framework/views/.gitignore
+
+# Public Uploads - Admin
+/public/uploads/**/*
+!/public/uploads/.gitkeep
+/public/upload/**/*
+!/public/upload/.gitkeep
+
+# Public user-generated content
+/public/pdfs/**/*
+!/public/pdfs/.gitkeep
+/public/img/**/*
+!/public/img/.gitkeep
+/public/wms/**/*
+!/public/wms/.gitkeep
+
+# Storage App Public
+/storage/app/public/**/*
+!/storage/app/public/.gitkeep
+
+# User uploaded files
+/public/storage/
+
+# Ignore Excel/CSV import files
+*.xlsx
+*.xls
+*.csv
+!exemple_import_*.csv
+!test_*.csv
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Composer
+composer.lock
+/vendor/
+
+# NPM/Yarn
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build
+/public/build/
+/public/hot
+
+# Testing
+.phpunit.cache
+.phpunit.result.cache
+
+# Database
+*.sqlite
+*.sqlite-journal
+
+# Cache
+bootstrap/cache/*
+!bootstrap/cache/.gitignore
+

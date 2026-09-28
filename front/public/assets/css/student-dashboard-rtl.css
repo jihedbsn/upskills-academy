@@ -1,0 +1,560 @@
+/* ===== STUDENT DASHBOARD RTL CSS - MODERN DESIGN ===== */
+
+
+/* RTL Specific Variables */
+
+:root {
+    --rtl-primary-color: #0071ae;
+    --rtl-primary-light: #338dbe;
+    --rtl-primary-dark: #005582;
+    --bs-primary-rgb: 0, 113, 174;
+    --bs-secondary-rgb: 252, 209, 22;
+}
+
+
+/* Base RTL Overrides */
+
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+
+/* Typography RTL */
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
+    font-family: 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+
+/* Layout RTL */
+
+[dir="rtl"] .student-dashboard-sidebar {
+    left: auto;
+    right: 0;
+    border-right: none;
+    border-left: 1px solid var(--gray-200);
+}
+
+[dir="rtl"] .student-dashboard-main {
+    margin-left: 0;
+    margin-right: var(--sidebar-width);
+}
+
+
+/* Sidebar RTL */
+
+[dir="rtl"] .sidebar-header {
+    text-align: right;
+}
+
+[dir="rtl"] .nav-link {
+    text-align: right;
+    padding: 0.875rem 1.25rem;
+}
+
+[dir="rtl"] .nav-link i.bi,
+[dir="rtl"] .nav-link i {
+    margin-right: 1rem !important;
+    margin-left: 0 !important;
+    margin-inline-end: 1rem !important;
+    margin-inline-start: 0 !important;
+}
+
+/* Override Bootstrap's me-3 class in RTL */
+[dir="rtl"] .me-3 {
+    margin-right: 1rem !important;
+    margin-left: 0 !important;
+}
+
+[dir="rtl"] .nav-link:hover {
+    transform: translateX(-4px);
+}
+
+[dir="rtl"] .nav-link.active::before {
+    left: auto;
+    right: 0;
+    border-radius: 2px 0 0 2px;
+}
+
+[dir="rtl"] .sidebar-heading {
+    text-align: right;
+}
+
+[dir="rtl"] .sidebar-footer {
+    text-align: right;
+}
+
+
+/* Header RTL */
+
+[dir="rtl"] .navbar-brand {
+    margin-right: 0;
+    margin-left: 1rem;
+}
+
+[dir="rtl"] .search-input {
+    padding-left: 3rem;
+    padding-right: 1rem;
+}
+
+[dir="rtl"] .search-input+i {
+    right: auto;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+[dir="rtl"] .navbar-nav {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+[dir="rtl"] .nav-item.dropdown {
+    margin-right: 0;
+    margin-left: 1rem;
+}
+
+[dir="rtl"] .dropdown-menu {
+    text-align: right;
+}
+
+[dir="rtl"] .dropdown-item {
+    text-align: right;
+}
+
+[dir="rtl"] .dropdown-item::before {
+    left: auto;
+    right: 0;
+}
+
+[dir="rtl"] .dropdown-item:hover {
+    transform: translateX(-4px);
+}
+
+[dir="rtl"] .dropdown-item i {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+
+/* Notifications RTL */
+
+[dir="rtl"] .notification-dropdown {
+    text-align: right;
+}
+
+[dir="rtl"] .notification-dropdown .dropdown-item .d-flex .flex-grow-1 {
+    margin-left: 0;
+    margin-right: 0.75rem;
+}
+
+
+/* Content RTL */
+
+[dir="rtl"] .student-dashboard-content {
+    text-align: right;
+}
+
+
+/* Cards RTL */
+
+[dir="rtl"] .card-header {
+    text-align: right;
+}
+
+[dir="rtl"] .card-body {
+    text-align: right;
+}
+
+
+/* Statistics Cards RTL */
+
+[dir="rtl"] .stat-card .d-flex .flex-grow-1 {
+    margin-left: 0;
+    margin-right: 0.75rem;
+}
+
+
+/* Tables RTL */
+
+[dir="rtl"] .table th,
+[dir="rtl"] .table td {
+    text-align: right;
+}
+
+[dir="rtl"] .table .d-flex {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .table .d-flex img {
+    margin-right: 0;
+    margin-left: 0.75rem;
+}
+
+[dir="rtl"] .table .d-flex .flex-grow-1 {
+    margin-left: 0;
+    margin-right: 0.75rem;
+}
+
+
+/* Progress Bars RTL */
+
+[dir="rtl"] .progress {
+    direction: rtl;
+}
+
+
+/* Buttons RTL */
+
+[dir="rtl"] .btn i {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+[dir="rtl"] .btn-outline-primary:hover {
+    transform: translateY(-2px);
+}
+
+
+/* Alerts RTL */
+
+[dir="rtl"] .alert i {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+
+/* Activity Items RTL */
+
+[dir="rtl"] .activity-icon {
+    margin-right: 0;
+    margin-left: 0.75rem;
+}
+
+[dir="rtl"] .list-group-item .d-flex .flex-grow-1 {
+    margin-left: 0;
+    margin-right: 0.75rem;
+}
+
+
+/* Quick Stats RTL */
+
+[dir="rtl"] .bg-light {
+    text-align: center;
+}
+
+
+/* Modals RTL */
+
+[dir="rtl"] .modal-header {
+    text-align: right;
+}
+
+[dir="rtl"] .modal-body {
+    text-align: right;
+}
+
+[dir="rtl"] .modal-footer {
+    justify-content: flex-start;
+}
+
+[dir="rtl"] .modal-footer .btn {
+    margin-left: 0;
+    margin-right: 0.5rem;
+}
+
+
+/* Breadcrumb RTL */
+
+[dir="rtl"] .breadcrumb {
+    text-align: right;
+}
+
+[dir="rtl"] .breadcrumb-item+.breadcrumb-item::before {
+    content: "‹";
+}
+
+
+/* Form Controls RTL */
+
+[dir="rtl"] .form-control {
+    text-align: right;
+}
+
+[dir="rtl"] .form-label {
+    text-align: right;
+}
+
+[dir="rtl"] .form-check {
+    text-align: right;
+    padding-right: 1.5rem;
+    padding-left: 0;
+}
+
+[dir="rtl"] .form-check-input {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+
+/* Dropdown Menus RTL */
+
+[dir="rtl"] .dropdown-menu-end {
+    right: auto;
+    left: 0;
+}
+
+[dir="rtl"] .dropdown-menu-start {
+    left: auto;
+    right: 0;
+}
+
+
+/* Responsive RTL */
+
+@media (max-width: 991.98px) {
+    [dir="rtl"] .student-dashboard-sidebar {
+        transform: translateX(100%);
+    }
+    [dir="rtl"] .student-dashboard-sidebar.show {
+        transform: translateX(0);
+    }
+    [dir="rtl"] .student-dashboard-main {
+        margin-right: 0;
+    }
+}
+
+
+/* Utility Classes RTL */
+
+[dir="rtl"] .text-start {
+    text-align: right !important;
+}
+
+[dir="rtl"] .text-end {
+    text-align: left !important;
+}
+
+[dir="rtl"] .ms-auto {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+[dir="rtl"] .me-auto {
+    margin-right: 0 !important;
+    margin-left: auto !important;
+}
+
+[dir="rtl"] .ms-1 {
+    margin-left: 0 !important;
+    margin-right: 0.25rem !important;
+}
+
+[dir="rtl"] .ms-2 {
+    margin-left: 0 !important;
+    margin-right: 0.5rem !important;
+}
+
+[dir="rtl"] .ms-3 {
+    margin-left: 0 !important;
+    margin-right: 1rem !important;
+}
+
+[dir="rtl"] .ms-4 {
+    margin-left: 0 !important;
+    margin-right: 1.5rem !important;
+}
+
+[dir="rtl"] .ms-5 {
+    margin-left: 0 !important;
+    margin-right: 3rem !important;
+}
+
+[dir="rtl"] .me-1 {
+    margin-right: 0 !important;
+    margin-left: 0.25rem !important;
+}
+
+[dir="rtl"] .me-2 {
+    margin-right: 0 !important;
+    margin-left: 0.5rem !important;
+}
+
+[dir="rtl"] .me-3 {
+    margin-right: 0 !important;
+    margin-left: 1rem !important;
+}
+
+[dir="rtl"] .me-4 {
+    margin-right: 0 !important;
+    margin-left: 1.5rem !important;
+}
+
+[dir="rtl"] .me-5 {
+    margin-right: 0 !important;
+    margin-left: 3rem !important;
+}
+
+[dir="rtl"] .ps-1 {
+    padding-left: 0 !important;
+    padding-right: 0.25rem !important;
+}
+
+[dir="rtl"] .ps-2 {
+    padding-left: 0 !important;
+    padding-right: 0.5rem !important;
+}
+
+[dir="rtl"] .ps-3 {
+    padding-left: 0 !important;
+    padding-right: 1rem !important;
+}
+
+[dir="rtl"] .ps-4 {
+    padding-left: 0 !important;
+    padding-right: 1.5rem !important;
+}
+
+[dir="rtl"] .ps-5 {
+    padding-left: 0 !important;
+    padding-right: 3rem !important;
+}
+
+[dir="rtl"] .pe-1 {
+    padding-right: 0 !important;
+    padding-left: 0.25rem !important;
+}
+
+[dir="rtl"] .pe-2 {
+    padding-right: 0 !important;
+    padding-left: 0.5rem !important;
+}
+
+[dir="rtl"] .pe-3 {
+    padding-right: 0 !important;
+    padding-left: 1rem !important;
+}
+
+[dir="rtl"] .pe-4 {
+    padding-right: 0 !important;
+    padding-left: 1.5rem !important;
+}
+
+[dir="rtl"] .pe-5 {
+    padding-right: 0 !important;
+    padding-left: 3rem !important;
+}
+
+
+/* Flex Direction RTL */
+
+[dir="rtl"] .flex-row {
+    flex-direction: row-reverse !important;
+}
+
+[dir="rtl"] .flex-row-reverse {
+    flex-direction: row !important;
+}
+
+
+/* Position RTL */
+
+[dir="rtl"] .position-absolute.start-0 {
+    left: auto !important;
+    right: 0 !important;
+}
+
+[dir="rtl"] .position-absolute.end-0 {
+    right: auto !important;
+    left: 0 !important;
+}
+
+
+/* Transform RTL */
+
+[dir="rtl"] .translate-middle-x {
+    transform: translateX(50%) !important;
+}
+
+[dir="rtl"] .translate-middle-y {
+    transform: translateY(-50%) !important;
+}
+
+
+/* Border RTL */
+
+[dir="rtl"] .border-end {
+    border-right: none !important;
+    border-left: 1px solid var(--gray-200) !important;
+}
+
+[dir="rtl"] .border-start {
+    border-left: none !important;
+    border-right: 1px solid var(--gray-200) !important;
+}
+
+
+/* Custom Scrollbar RTL */
+
+[dir="rtl"] ::-webkit-scrollbar {
+    width: 6px;
+}
+
+[dir="rtl"] ::-webkit-scrollbar-track {
+    background: var(--gray-100);
+}
+
+[dir="rtl"] ::-webkit-scrollbar-thumb {
+    background: var(--gray-300);
+    border-radius: 3px;
+}
+
+[dir="rtl"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-400);
+}
+
+
+/* Animation RTL */
+
+[dir="rtl"] @keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+[dir="rtl"] .stat-card {
+    animation: slideInLeft 0.6s ease-out;
+}
+
+
+/* Focus States RTL */
+
+[dir="rtl"] .btn:focus,
+[dir="rtl"] .form-control:focus,
+[dir="rtl"] .nav-link:focus {
+    box-shadow: 0 0 0 3px rgba(0, 113, 174, 0.1);
+    outline: none;
+}
+
+
+/* Print RTL */
+
+@media print {
+    [dir="rtl"] .student-dashboard-sidebar {
+        right: auto;
+        left: 0;
+    }
+    [dir="rtl"] .student-dashboard-main {
+        margin-right: 0;
+    }
+}

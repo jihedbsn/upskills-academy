@@ -1,0 +1,207 @@
+/* =============================================================================
+   Upskills Academy — brand theme over the Educrat template.
+   Loaded AFTER main.css. Derived from design-system/tokens.css:
+   navy #093162 (primary) · teal #3cb4b0 (accent) · off-white #f7f8fa
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Libre+Franklin:wght@400;500;600;700&display=swap');
+
+:root {
+  /* -- Re-point the template's brand variables ------------------------------ */
+  --color-purple-1: #093162;   /* primary (navy-800) */
+  --color-purple-2: #d7dee6;   /* primary subtle (navy-100) */
+  --color-purple-4: #3cb4b0;   /* accent (teal-400) */
+  --color-purple-5: #eff9f9;   /* accent subtle (teal-50) */
+  --color-green-1:  #3cb4b0;   /* legacy yellow accent → teal */
+  --color-light-7:  #eff9f9;   /* light info surfaces → teal-50 */
+  --color-light-11: #d7dee6;   /* lavender chips → navy-100 */
+
+  /* -- Upskills token aliases (for future custom code) ---------------------- */
+  --us-navy: #093162; --us-navy-dark: #081d36; --us-navy-700: #264a75;
+  --us-teal: #3cb4b0; --us-teal-600: #297a7b; --us-teal-50: #eff9f9;
+  --us-bg: #f7f8fa; --us-radius: 8px;
+}
+
+/* -- Typography --------------------------------------------------------------
+   Libre Franklin for UI/body, Newsreader for display headings.
+   Arabic (RTL) falls back to system Arabic fonts automatically. */
+body, .button, input, select, textarea {
+  font-family: 'Libre Franklin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+h1, h2, .masthead__title, .sectionTitle__title {
+  font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+  letter-spacing: -0.02em;
+}
+html[dir="rtl"] h1, html[dir="rtl"] h2,
+html[dir="rtl"] .masthead__title, html[dir="rtl"] .sectionTitle__title {
+  font-family: inherit; /* keep native Arabic rendering for display text */
+}
+
+/* -- Rules where the template hardcodes its old purple ----------------------- */
+.button.-gradient-1 {
+  background: linear-gradient(90deg, #093162 0%, #3cb4b0 108.34%);
+}
+.about-content__title span,
+.app-content__title span,
+.blogCard.-type-1 .blogCard__category,
+.blogCard.-type-2 .blogCard__category,
+.testimonials.-type-1 .testimonials__title {
+  color: #297a7b; /* teal-600: accessible accent text */
+}
+.categoryCard.-type-1 .categoryCard__content::before {
+  background-color: #093162;
+}
+.footer.-type-1 .footer-columns .footer-columns-form .form-group button {
+  background-color: #3cb4b0;
+  color: #081d36;
+}
+
+/* -- Buttons & interactions --------------------------------------------------- */
+.button { border-radius: 8px; }
+.button.-purple-1:hover { background-color: #081d36 !important; border-color: #081d36 !important; }
+.button.-outline-purple-1:hover { background-color: #093162; color: #fff !important; }
+a:focus-visible, button:focus-visible, .button:focus-visible,
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(60, 180, 176, 0.45);
+}
+
+/* -- Header / hero polish ----------------------------------------------------- */
+.header .header-menu .menu li a:hover { color: #3cb4b0 !important; }
+.masthead.-type-1 .masthead__bg { background-color: #081d36; }
+
+/* -- Cards -------------------------------------------------------------------- */
+.coursesCard.-type-1 .coursesCard__content .coursesCard-footer,
+.coursesCard { border-radius: 12px; }
+.rating__star, .icon-star { color: #e59819; } /* keep stars amber for scannability */
+
+/* -- Preloader: brand navy instead of legacy blue ---------------------------- */
+.preloader__bg { background-color: #081d36 !important; }
+/* -- Fixed header: brand navy (was legacy #0071ae baked into main.css) ------- */
+.header.-type-1 { background-color: #081d36 !important; }
+.header .header-menu .menu .subnav > li > a:hover { color: #297a7b !important; }
+/* -- Breadcrumbs: visible current item + tidy separators ---------------------- */
+.breadcrumbs__content > * + *:last-child a,
+.breadcrumbs__content .us-crumb-current { color: #081d36 !important; font-size: 13px; line-height: 1; font-weight: 600; }
+.breadcrumbs__content > * + *::before { color: #90949a; }
+.breadcrumbs__item a { color: #5c626b; }
+.breadcrumbs__item a:hover { color: #297a7b; }
+html[dir="rtl"] .breadcrumbs__content > * + *::before { margin-right: 0; margin-left: 8px; }
+
+/* -- Page header band (partnership etc.): hero-style navy gradient ----------- */
+.us-pagehead {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(70rem 30rem at 100% -10%, rgba(60, 180, 176, 0.16) 0%, transparent 55%),
+    linear-gradient(160deg, #081d36 0%, #093162 65%, #0d3a6e 100%);
+  padding: 170px 0 80px;
+}
+.us-pagehead__grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(247,248,250,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(247,248,250,0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(70rem 32rem at 50% 0%, #000 0%, transparent 78%);
+  -webkit-mask-image: radial-gradient(70rem 32rem at 50% 0%, #000 0%, transparent 78%);
+  pointer-events: none;
+}
+.us-pagehead .pageHeader__title,
+.us-pagehead h1 {
+  color: #f7f8fa !important;
+  font-family: 'Newsreader', Georgia, serif;
+  letter-spacing: -0.02em;
+}
+html[dir="rtl"] .us-pagehead h1 { font-family: inherit; }
+.us-pagehead .text-dark-1 { color: rgba(247, 248, 250, 0.75) !important; }
+@media (max-width: 767px) { .us-pagehead { padding: 140px 0 60px; } }
+
+/* -- Auth pages: decorated photo panel (login/register) ---------------------- */
+.us-auth-deco { position: absolute; pointer-events: none; z-index: 2; }
+.us-auth-deco--dots {
+  top: 42px; inset-inline-end: 34px;
+  width: 140px; height: 170px;
+  background-image: radial-gradient(rgba(105, 197, 194, 0.6) 2.2px, transparent 2.6px);
+  background-size: 20px 20px;
+  mask-image: linear-gradient(200deg, #000 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(200deg, #000 55%, transparent 100%);
+}
+.us-auth-deco--ring {
+  bottom: 120px; inset-inline-end: -48px;
+  width: 170px; height: 170px;
+  border: 2.5px solid rgba(60, 180, 176, 0.45);
+  border-radius: 50%;
+  mask-image: linear-gradient(250deg, #000 45%, transparent 80%);
+  -webkit-mask-image: linear-gradient(250deg, #000 45%, transparent 80%);
+}
+.us-auth-chip {
+  position: absolute; z-index: 3;
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(247, 248, 250, 0.72);
+  backdrop-filter: blur(12px) saturate(1.15);
+  -webkit-backdrop-filter: blur(12px) saturate(1.15);
+  border: 1px solid rgba(247, 248, 250, 0.45);
+  border-radius: 12px; padding: 12px 18px;
+  box-shadow: 0 16px 32px rgba(4, 12, 26, 0.30);
+  font-size: 14.5px; font-weight: 600; color: #081d36;
+}
+.us-auth-chip--top { top: 54px; inset-inline-start: 40px; }
+.us-auth-chip--mid { bottom: 170px; inset-inline-start: 40px; }
+.us-auth-chip .us-auth-chip__stars { color: #e59819; letter-spacing: 1.5px; font-size: 13px; }
+.us-auth-levels {
+  position: absolute; z-index: 3;
+  bottom: 56px; inset-inline-start: 40px;
+  display: flex; gap: 7px;
+  background: rgba(8, 29, 54, 0.66);
+  border: 1px solid rgba(247, 248, 250, 0.16);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 999px; padding: 9px 13px;
+}
+.us-auth-levels span {
+  padding: 5px 11px; border-radius: 999px;
+  font-size: 12.5px; font-weight: 700; color: rgba(247, 248, 250, 0.66);
+}
+.us-auth-levels span.is-accent { background: #3cb4b0; color: #081d36; }
+.us-auth-float { animation: usAuthFloat 7s ease-in-out infinite; animation-delay: var(--f, 0s); }
+@keyframes usAuthFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -9px; }
+}
+@media (prefers-reduced-motion: reduce) { .us-auth-float { animation: none; } }
+@media (max-width: 991px) {
+  .us-auth-chip, .us-auth-levels, .us-auth-deco { display: none; }
+}
+.form-page__img { position: relative; overflow: hidden; }
+.us-auth-decowrap { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+.us-auth-chip { white-space: nowrap; }
+
+/* ============================================================================
+   iOS input-text fix (2026-07)
+   Real iPhones (Safari + Chrome — both WebKit) render form text white/invisible
+   under Dark Mode because no color-scheme is declared and the Educrat template
+   sets `color: white !important` on some inputs. Desktop Blink never reproduces
+   it. Declare a light scheme site-wide, and hard-force readable text on the
+   light auth-form fields (login/signup use .form-page).
+   ========================================================================== */
+:root { color-scheme: light; }
+
+.form-page input:not([type="checkbox"]):not([type="radio"]),
+.form-page textarea,
+.form-page select {
+  color: #1f2937 !important;
+  -webkit-text-fill-color: #1f2937 !important;
+  caret-color: #093162;
+  opacity: 1 !important;
+}
+.form-page input::placeholder,
+.form-page textarea::placeholder {
+  color: #9aa1ab !important;
+  -webkit-text-fill-color: #9aa1ab !important;
+  opacity: 1 !important;
+}
+/* Autofilled fields on iOS/WebKit also force-fill text — keep it dark */
+.form-page input:-webkit-autofill {
+  -webkit-text-fill-color: #1f2937 !important;
+  transition: background-color 9999s ease-in-out 0s;
+}

@@ -1,0 +1,558 @@
+/**
+ * Styles pour Certificate Editor avec Boutons
+ * Interface claire avec boutons visibles pour glisser les champs
+ */
+
+
+/* Boutons de glissement dans la sidebar */
+
+.drag-buttons-sidebar {
+    margin-bottom: 15px;
+}
+
+.drag-buttons-sidebar .btn {
+    transition: all 0.2s ease;
+    font-weight: bold;
+    border: 2px solid;
+}
+
+.drag-buttons-sidebar .btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.drag-buttons-sidebar .btn:active {
+    transform: scale(0.98);
+}
+
+
+/* Conteneur des boutons de glissement (pour compatibilité) */
+
+.drag-buttons-container {
+    position: fixed !important;
+    top: 20px !important;
+    left: 20px !important;
+    z-index: 1000 !important;
+    background: white !important;
+    padding: 15px !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    border: 2px solid #007bff !important;
+    min-width: 250px !important;
+    max-width: 300px !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+.drag-buttons-container h6 {
+    margin-bottom: 15px !important;
+    color: #007bff !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+    text-align: center !important;
+}
+
+
+/* Boutons de glissement */
+
+.drag-button {
+    width: 100% !important;
+    padding: 12px !important;
+    margin-bottom: 8px !important;
+    border: 2px solid !important;
+    background: #007bff !important;
+    color: white !important;
+    border-radius: 8px !important;
+    cursor: grab !important;
+    font-weight: bold !important;
+    transition: all 0.2s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    font-size: 14px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.drag-button:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+.drag-button:active {
+    cursor: grabbing !important;
+    transform: scale(0.95) !important;
+}
+
+
+/* Couleurs spécifiques pour chaque bouton */
+
+.drag-button[data-field="name_student"] {
+    background: #007bff !important;
+    border-color: #007bff !important;
+}
+
+.drag-button[data-field="date"] {
+    background: #28a745 !important;
+    border-color: #28a745 !important;
+}
+
+.drag-button[data-field="serial_number"] {
+    background: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: #212529 !important;
+}
+
+.drag-button[data-field="qr_code"] {
+    background: #dc3545 !important;
+    border-color: #dc3545 !important;
+}
+
+
+/* Instructions */
+
+.drag-instructions {
+    margin-top: 15px !important;
+    padding: 12px !important;
+    background: #f8f9fa !important;
+    border-radius: 6px !important;
+    font-size: 12px !important;
+    color: #6c757d !important;
+    line-height: 1.4 !important;
+    border-left: 3px solid #007bff !important;
+}
+
+
+/* Champs sur le certificat */
+
+.certificate-field-button,
+.certificate-field-simple {
+    position: absolute !important;
+    border: 2px solid #007bff !important;
+    background: rgba(0, 123, 255, 0.1) !important;
+    border-radius: 6px !important;
+    padding: 8px !important;
+    cursor: move !important;
+    user-select: none !important;
+    transition: all 0.2s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 100px !important;
+    min-height: 30px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    font-weight: bold !important;
+    color: #007bff !important;
+}
+
+.certificate-field-button:hover {
+    border-color: #0056b3 !important;
+    background: rgba(0, 123, 255, 0.2) !important;
+    transform: scale(1.02) !important;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3) !important;
+}
+
+.certificate-field-button.selected {
+    border-color: #28a745 !important;
+    background: rgba(40, 167, 69, 0.2) !important;
+    color: #28a745 !important;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.3) !important;
+    transform: scale(1.05) !important;
+}
+
+.certificate-field-button.moving {
+    z-index: 1000 !important;
+    transform: scale(1.1) rotate(2deg) !important;
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4) !important;
+    border-style: solid !important;
+    opacity: 0.9 !important;
+}
+
+
+/* Contenu des champs */
+
+.field-content {
+    flex: 1 !important;
+    text-align: center !important;
+    word-wrap: break-word !important;
+    overflow: hidden !important;
+}
+
+
+/* Contrôles des champs */
+
+.field-controls {
+    position: absolute !important;
+    top: -8px !important;
+    right: -8px !important;
+    display: flex !important;
+    gap: 2px !important;
+    opacity: 0 !important;
+    transition: opacity 0.2s ease !important;
+}
+
+.field-btn {
+    width: 20px !important;
+    height: 20px !important;
+    border: none !important;
+    border-radius: 50% !important;
+    background: #007bff !important;
+    color: white !important;
+    font-size: 10px !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.2s ease !important;
+}
+
+.field-btn:hover {
+    background: #0056b3 !important;
+    transform: scale(1.1) !important;
+}
+
+.field-delete {
+    background: #dc3545 !important;
+}
+
+.field-delete:hover {
+    background: #c82333 !important;
+}
+
+.field-move {
+    background: #28a745 !important;
+}
+
+.field-move:hover {
+    background: #218838 !important;
+}
+
+
+/* Indicateur de position */
+
+.position-indicator {
+    position: absolute !important;
+    top: -25px !important;
+    left: 0 !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    color: white !important;
+    padding: 2px 6px !important;
+    border-radius: 3px !important;
+    font-size: 11px !important;
+    font-family: monospace !important;
+    opacity: 0 !important;
+    transition: opacity 0.2s ease !important;
+    pointer-events: none !important;
+    white-space: nowrap !important;
+}
+
+.certificate-field-button:hover .position-indicator {
+    opacity: 1 !important;
+}
+
+
+/* Indicateur de drop */
+
+#dragIndicator {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 123, 255, 0.1) !important;
+    border: 2px dashed #007bff !important;
+    border-radius: 8px !important;
+    pointer-events: none !important;
+    z-index: 100 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 18px !important;
+    color: #007bff !important;
+    font-weight: bold !important;
+    animation: pulse 1s infinite !important;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+
+/* Canvas principal */
+
+.certificate-editor-container {
+    position: relative !important;
+    overflow: auto !important;
+    height: calc(100vh - 200px) !important;
+    background: #f8f9fa !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding: 20px !important;
+}
+
+.certificate-canvas {
+    position: relative !important;
+    background: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+    transform-origin: center top !important;
+    transition: transform 0.3s ease !important;
+    min-width: 800px !important;
+    min-height: 600px !important;
+}
+
+.certificate-background {
+    position: relative !important;
+}
+
+.certificate-background img {
+    display: block !important;
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 8px !important;
+}
+
+.certificate-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none !important;
+    border-radius: 8px !important;
+}
+
+
+/* Liste des champs dans la sidebar */
+
+.field-list {
+    max-height: 300px !important;
+    overflow-y: auto !important;
+}
+
+.field-item {
+    display: flex !important;
+    align-items: center !important;
+    padding: 12px !important;
+    border: 1px solid #dee2e6 !important;
+    border-radius: 8px !important;
+    margin-bottom: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    background: white !important;
+}
+
+.field-item:hover {
+    background: #f8f9fa !important;
+    border-color: #007bff !important;
+    transform: translateX(5px) !important;
+}
+
+.field-item.active {
+    background: #e3f2fd !important;
+    border-color: #007bff !important;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2) !important;
+}
+
+.field-toggle {
+    margin-left: auto !important;
+}
+
+.field-icon {
+    font-size: 1.2em !important;
+    margin-right: 10px !important;
+    display: inline-block !important;
+    width: 24px !important;
+    text-align: center !important;
+}
+
+
+/* Contrôles de style */
+
+#styleControls .form-control,
+#styleControls .form-select {
+    border-radius: 6px !important;
+    border: 1px solid #ced4da !important;
+    transition: all 0.2s ease !important;
+}
+
+#styleControls .form-control:focus,
+#styleControls .form-select:focus {
+    border-color: #007bff !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+}
+
+#styleControls .form-range {
+    height: 6px !important;
+    background: #dee2e6 !important;
+    border-radius: 3px !important;
+}
+
+#styleControls .form-range::-webkit-slider-thumb {
+    width: 20px !important;
+    height: 20px !important;
+    background: #007bff !important;
+    border-radius: 50% !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+
+#styleControls .btn-check:checked+.btn {
+    background: #007bff !important;
+    color: white !important;
+    border-color: #007bff !important;
+}
+
+
+/* Animations */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.certificate-field-button {
+    animation: fadeIn 0.3s ease !important;
+}
+
+.field-item {
+    animation: slideIn 0.2s ease !important;
+}
+
+.drag-button {
+    animation: slideIn 0.3s ease !important;
+}
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .drag-buttons-container {
+        top: 10px !important;
+        left: 10px !important;
+        min-width: 200px !important;
+        max-width: 250px !important;
+        padding: 10px !important;
+    }
+    .drag-button {
+        padding: 8px !important;
+        font-size: 12px !important;
+    }
+    .certificate-editor-container {
+        height: calc(100vh - 150px) !important;
+        padding: 10px !important;
+    }
+    .certificate-canvas {
+        transform: scale(0.8) !important;
+        min-width: 600px !important;
+        min-height: 450px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .drag-buttons-container {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        margin: 10px !important;
+        width: calc(100% - 20px) !important;
+    }
+    .certificate-canvas {
+        transform: scale(0.6) !important;
+        min-width: 400px !important;
+        min-height: 300px !important;
+    }
+    .certificate-field-button {
+        min-width: 80px !important;
+        min-height: 25px !important;
+        font-size: 12px !important;
+        padding: 4px !important;
+    }
+}
+
+
+/* États spéciaux */
+
+.certificate-field-button.moving .field-controls {
+    display: none !important;
+}
+
+.certificate-field-button.selected .field-controls {
+    opacity: 1 !important;
+}
+
+
+/* Amélioration de l'accessibilité */
+
+.certificate-field-button:focus {
+    outline: 2px solid #007bff !important;
+    outline-offset: 2px !important;
+}
+
+.field-btn:focus {
+    outline: 2px solid #0056b3 !important;
+    outline-offset: 1px !important;
+}
+
+.drag-button:focus {
+    outline: 2px solid #0056b3 !important;
+    outline-offset: 2px !important;
+}
+
+
+/* Indicateurs de statut */
+
+.certificate-field-button::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 2px !important;
+    right: 2px !important;
+    width: 8px !important;
+    height: 8px !important;
+    background: #28a745 !important;
+    border-radius: 50% !important;
+    opacity: 0 !important;
+    transition: opacity 0.2s ease !important;
+}
+
+.certificate-field-button.selected::after {
+    opacity: 1 !important;
+}
+
+
+/* Amélioration des transitions */
+
+* {
+    transition: all 0.2s ease !important;
+}
+
+.certificate-field-button,
+.field-item,
+.field-btn,
+.drag-button {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}

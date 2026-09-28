@@ -1,0 +1,583 @@
+/* Filter Custom Styles */
+
+
+/* Sidebar Search */
+
+.sidebar-search .form-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-search .form-input input {
+    flex: 1;
+    padding: 15px 50px 15px 20px;
+    border: 1px solid #e1e5e9;
+    border-radius: 12px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-search .form-input input:focus {
+    border-color: #3554d1;
+    box-shadow: 0 0 0 3px rgba(53, 84, 209, 0.1);
+    outline: none;
+}
+
+.sidebar-search .form-input button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: #3554d1;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.sidebar-search .form-input button:hover {
+    background: #2a43a8;
+    transform: translateY(-50%) scale(1.05);
+}
+
+
+/* Price Filter */
+
+.sidebar-price-filter input {
+    padding: 12px 16px;
+    border: 1px solid #e1e5e9;
+    border-radius: 10px;
+    font-size: 14px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.sidebar-price-filter input:focus {
+    border-color: #3554d1;
+    box-shadow: 0 0 0 3px rgba(53, 84, 209, 0.1);
+    outline: none;
+}
+
+
+/* Course Cards */
+
+.coursesCard.-type-1 {
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f0f0f0;
+    position: relative;
+}
+
+
+/* Course Badge Overlay */
+
+.course-badge-overlay {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.course-card-link {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: block;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.course-card-link:hover {
+    text-decoration: none !important;
+    color: inherit !important;
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.course-card-link:hover .coursesCard.-type-1 {
+    border-color: #3554d1;
+}
+
+.coursesCard.-type-1:hover {
+    transform: none;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    border-color: #3554d1;
+}
+
+.coursesCard__image {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+.coursesCard__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.coursesCard.-type-1:hover .coursesCard__image img {
+    transform: scale(1.08);
+}
+
+
+/* Card Content */
+
+.coursesCard.-type-1 .h-100.pt-15 {
+    padding: 25px 20px 20px 20px !important;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.coursesCard.-type-1 .text-17.lh-15.fw-500.text-dark-1.mt-10 {
+    margin-top: 0 !important;
+    margin-bottom: 12px;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.coursesCard.-type-1 .text-14.lh-1.text-light-1.mt-10 {
+    margin-top: 0 !important;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    color: #666;
+    flex: 1;
+}
+
+.coursesCard-footer {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 20px;
+}
+
+.coursesCard-footer__price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #3554d1;
+    text-align: center;
+    text-decoration: none !important;
+}
+
+.coursesCard-footer__price div {
+    text-decoration: none !important;
+}
+
+
+/* Promotion Styles */
+
+.coursesCard-footer__price .text-green-1 {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    display: inline-block;
+    animation: pulse-promo 2s infinite;
+}
+
+@keyframes pulse-promo {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+}
+
+
+/* Sidebar Improvements */
+
+.sidebar.-courses {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f0f0f0;
+}
+
+.sidebar__item {
+    margin-bottom: 25px;
+}
+
+.sidebar__item:last-child {
+    margin-bottom: 0;
+}
+
+.sidebar__title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+}
+
+
+/* Advanced Filters Styles */
+
+.sidebar-checkbox {
+    margin-top: 15px;
+}
+
+.sidebar-checkbox__item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sidebar-checkbox__item:hover {
+    background: rgba(53, 84, 209, 0.05);
+    border-radius: 6px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.sidebar-checkbox__title {
+    flex: 1;
+    font-size: 14px;
+    color: #2d3748;
+    margin-left: 10px;
+}
+
+.sidebar-checkbox__count {
+    font-size: 12px;
+    color: #718096;
+    font-weight: 500;
+}
+
+
+/* Form Checkbox Styles */
+
+.form-checkbox {
+    position: relative;
+    display: inline-block;
+}
+
+.form-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.form-checkbox__mark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #e2e8f0;
+    border-radius: 4px;
+    background: white;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-checkbox input[type="checkbox"]:checked+.form-checkbox__mark {
+    background: #3554d1;
+    border-color: #3554d1;
+}
+
+.form-checkbox__icon {
+    color: white;
+    font-size: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.form-checkbox input[type="checkbox"]:checked+.form-checkbox__mark .form-checkbox__icon {
+    opacity: 1;
+}
+
+
+/* Form Radio Styles */
+
+.form-radio {
+    position: relative;
+    display: inline-block;
+}
+
+.radio {
+    position: relative;
+    display: inline-block;
+}
+
+.radio input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio__mark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #e2e8f0;
+    border-radius: 50%;
+    background: white;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radio input[type="radio"]:checked+.radio__mark {
+    border-color: #3554d1;
+}
+
+.radio__icon {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #3554d1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.radio input[type="radio"]:checked+.radio__mark .radio__icon {
+    opacity: 1;
+}
+
+
+/* Sort Select Styles */
+
+.form-select {
+    background: white;
+    border: 1px solid #e1e5e9;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #2d3748;
+    transition: all 0.3s ease;
+    min-width: 150px;
+}
+
+.form-select:focus {
+    border-color: #3554d1;
+    box-shadow: 0 0 0 3px rgba(53, 84, 209, 0.1);
+    outline: none;
+}
+
+
+/* Filter Button Styles */
+
+.sidebar-price-filter .button {
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.sidebar-price-filter .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(53, 84, 209, 0.3);
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .coursesCard__image {
+        height: 180px;
+    }
+    .coursesCard.-type-1 .h-100.pt-15 {
+        padding: 20px 15px 15px 15px !important;
+    }
+    .sidebar.-courses {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+}
+
+
+/* RTL Support */
+
+[dir="rtl"] .sidebar-search .form-input input {
+    padding: 15px 20px 15px 50px;
+}
+
+[dir="rtl"] .sidebar-search .form-input button {
+    right: auto;
+    left: 8px;
+}
+
+[dir="rtl"] .sidebar-checkbox__item:hover {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+[dir="rtl"] .sidebar-checkbox__title {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+[dir="rtl"] .form-radio.mr-10 {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+
+/* Course Detail Page Styles */
+
+.course-image-wrapper {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.course-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.course-badge.paid {
+    background: #6366f1;
+    color: white;
+}
+
+.course-badge.free {
+    background: #10b981;
+    color: white;
+}
+
+.course-info {
+    padding: 20px 0;
+}
+
+.course-meta {
+    background: #f8fafc;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.meta-item {
+    margin-bottom: 15px;
+}
+
+.meta-label {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.meta-value {
+    font-size: 16px;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.course-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.course-actions .button {
+    flex: 1;
+    min-width: 150px;
+}
+
+.course-description {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+
+/* Responsive for course detail */
+
+@media (max-width: 768px) {
+    .course-actions {
+        flex-direction: column;
+    }
+    .course-actions .button {
+        width: 100%;
+    }
+    .course-meta {
+        padding: 20px;
+    }
+    .course-description {
+        padding: 20px;
+    }
+}
+
+/* Discount Badge for Package Courses */
+
+.discount-badge-overlay {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.discount-badge-package {
+    background: linear-gradient(135deg, #0071ae 0%, #005e8f 100%);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 113, 174, 0.3);
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Price Display with Discount */
+
+.price-with-discount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.price-original {
+    font-size: 12px;
+    color: #999;
+    text-decoration: line-through;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+.price-discounted {
+    font-size: 18px;
+    font-weight: 700;
+    color: #e6b800;
+}

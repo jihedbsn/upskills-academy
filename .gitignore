@@ -1,0 +1,46 @@
+# ── Secrets ───────────────────────────────────────────────
+# Real values live in untracked .env files; only *.example templates are committed.
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+deploy/env.*.production
+
+# ── Database dumps (contain real customer data) ───────────
+*.sql
+*.sql.gz
+*.dump
+!seed_upskills_demo.sql
+
+# ── Dependencies & build output ───────────────────────────
+**/vendor/
+**/node_modules/
+**/public/build/
+**/public/hot
+
+# ── Runtime data (logs, caches, uploads, attachments) ─────
+# Keep the directory skeleton via the .gitignore files Laravel ships inside storage/.
+front/storage/**
+admin-panel/storage/**
+!front/storage/**/
+!admin-panel/storage/**/
+!front/storage/**/.gitignore
+!admin-panel/storage/**/.gitignore
+# Stray compiled-view cache left over from an old deploy
+admin-panel/admin/
+**/bootstrap/cache/*.php
+*.log
+
+# ── Editors & OS ──────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Hosting-panel artifact (points at an old server path)
+.php-ini
+**/.php-ini

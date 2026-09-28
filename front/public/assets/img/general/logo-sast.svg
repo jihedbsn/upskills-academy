@@ -1,0 +1,51 @@
+<svg width="200" height="80" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90E2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E5BBA;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- SAST Acronym with Runner Icon -->
+  <g filter="url(#shadow)">
+    <!-- Letter S (Gold) -->
+    <path d="M15 20 Q25 15 35 20 Q45 25 45 35 Q45 45 35 50 Q25 55 15 50" 
+          fill="url(#goldGradient)" stroke="#FFD700" stroke-width="2"/>
+    
+    <!-- Letter A (Blue) -->
+    <path d="M50 50 L60 20 L70 50 M55 40 L65 40" 
+          fill="url(#blueGradient)" stroke="#2E5BBA" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Runner Icon (White) integrated into A -->
+    <path d="M58 25 L62 30 L60 35 L58 30 L56 25" 
+          fill="white" stroke="white" stroke-width="1"/>
+    
+    <!-- Letter S (Blue) -->
+    <path d="M75 20 Q85 15 95 20 Q105 25 105 35 Q105 45 95 50 Q85 55 75 50" 
+          fill="url(#blueGradient)" stroke="#2E5BBA" stroke-width="2"/>
+    
+    <!-- Letter T (Blue) -->
+    <path d="M110 20 L130 20 M120 20 L120 50" 
+          fill="url(#blueGradient)" stroke="#2E5BBA" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Full Name -->
+  <g>
+    <!-- SWEDISH ACADEMY -->
+    <text x="100" y="65" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white" stroke="#FFD700" stroke-width="0.5">
+      SWEDISH ACADEMY
+    </text>
+    
+    <!-- OF SPORT TRAINING -->
+    <text x="100" y="75" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" font-weight="bold" fill="white" stroke="#FFD700" stroke-width="0.5">
+      OF SPORT TRAINING
+    </text>
+  </g>
+</svg>

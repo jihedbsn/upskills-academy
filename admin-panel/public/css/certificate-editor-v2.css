@@ -1,0 +1,460 @@
+/**
+ * Styles pour Certificate Editor V2
+ * Solution moderne avec HTML5 Drag & Drop
+ */
+
+
+/* Canvas principal */
+
+.certificate-editor-container {
+    position: relative;
+    overflow: auto;
+    height: calc(100vh - 200px);
+    background: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.certificate-canvas {
+    position: relative;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transform-origin: center top;
+    transition: transform 0.3s ease;
+    min-width: 800px;
+    min-height: 600px;
+}
+
+.certificate-background {
+    position: relative;
+}
+
+.certificate-background img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.certificate-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-radius: 8px;
+}
+
+
+/* Champs draggables V2 */
+
+.certificate-field-v2 {
+    position: absolute;
+    border: 2px solid transparent;
+    background: rgba(0, 123, 255, 0.1);
+    border-radius: 6px;
+    padding: 8px;
+    cursor: move;
+    user-select: none;
+    pointer-events: all;
+    transition: all 0.2s ease;
+    min-width: 100px;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #007bff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.certificate-field-v2:hover {
+    border-color: #007bff;
+    background: rgba(0, 123, 255, 0.2);
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.certificate-field-v2.selected {
+    border-color: #28a745;
+    background: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.3);
+    transform: scale(1.05);
+}
+
+.certificate-field-v2.dragging {
+    z-index: 1000;
+    transform: scale(1.1) rotate(2deg);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+    border-style: solid;
+    opacity: 0.9;
+}
+
+
+/* Contenu des champs */
+
+.field-content {
+    flex: 1;
+    text-align: center;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+
+/* Contrôles des champs */
+
+.field-controls {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    display: flex;
+    gap: 2px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.field-btn {
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 50%;
+    background: #007bff;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.field-btn:hover {
+    background: #0056b3;
+    transform: scale(1.1);
+}
+
+.field-delete {
+    background: #dc3545;
+}
+
+.field-delete:hover {
+    background: #c82333;
+}
+
+
+/* Indicateur de position */
+
+.position-indicator {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-family: monospace;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.certificate-field-v2:hover .position-indicator {
+    opacity: 1;
+}
+
+
+/* Grille magnétique */
+
+.grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.1;
+    background-image: linear-gradient(to right, #ccc 1px, transparent 1px), linear-gradient(to bottom, #ccc 1px, transparent 1px);
+    background-size: 10px 10px;
+    display: none;
+    z-index: 1;
+    border-radius: 8px;
+}
+
+
+/* Contrôles du canvas */
+
+.certificate-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    display: flex;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 5px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.certificate-controls .btn {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #dee2e6;
+    background: white;
+    color: #6c757d;
+    transition: all 0.2s ease;
+}
+
+.certificate-controls .btn:hover {
+    background: #f8f9fa;
+    color: #495057;
+    transform: scale(1.1);
+}
+
+.certificate-controls .btn.btn-primary {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+
+/* Liste des champs */
+
+.field-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.field-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+.field-item:hover {
+    background: #f8f9fa;
+    border-color: #007bff;
+    transform: translateX(5px);
+}
+
+.field-item.active {
+    background: #e3f2fd;
+    border-color: #007bff;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+}
+
+.field-toggle {
+    margin-left: auto;
+}
+
+.field-icon {
+    font-size: 1.2em;
+    margin-right: 10px;
+    display: inline-block;
+    width: 24px;
+    text-align: center;
+}
+
+
+/* Contrôles de style améliorés */
+
+#styleControls .form-control,
+#styleControls .form-select {
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    transition: all 0.2s ease;
+}
+
+#styleControls .form-control:focus,
+#styleControls .form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+#styleControls .form-range {
+    height: 6px;
+    background: #dee2e6;
+    border-radius: 3px;
+}
+
+#styleControls .form-range::-webkit-slider-thumb {
+    width: 20px;
+    height: 20px;
+    background: #007bff;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+#styleControls .btn-check:checked+.btn {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+
+/* Animations */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.certificate-field-v2 {
+    animation: fadeIn 0.3s ease;
+}
+
+.field-item {
+    animation: slideIn 0.2s ease;
+}
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .certificate-editor-container {
+        height: calc(100vh - 150px);
+        padding: 10px;
+    }
+    .certificate-canvas {
+        transform: scale(0.8);
+        min-width: 600px;
+        min-height: 450px;
+    }
+    .certificate-controls {
+        top: 5px;
+        right: 5px;
+        gap: 3px;
+    }
+    .certificate-controls .btn {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .certificate-canvas {
+        transform: scale(0.6);
+        min-width: 400px;
+        min-height: 300px;
+    }
+    .certificate-field-v2 {
+        min-width: 80px;
+        min-height: 25px;
+        font-size: 12px;
+        padding: 4px;
+    }
+}
+
+
+/* États spéciaux */
+
+.certificate-field-v2.dragging .field-controls {
+    display: none;
+}
+
+.certificate-field-v2.selected .field-controls {
+    opacity: 1;
+}
+
+
+/* Amélioration de l'accessibilité */
+
+.certificate-field-v2:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+.field-btn:focus {
+    outline: 2px solid #0056b3;
+    outline-offset: 1px;
+}
+
+
+/* Mode sombre (optionnel) */
+
+@media (prefers-color-scheme: dark) {
+    .certificate-editor-container {
+        background: #1a1a1a;
+    }
+    .certificate-canvas {
+        background: #2d2d2d;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .field-item {
+        background: #2d2d2d;
+        border-color: #444;
+        color: #fff;
+    }
+    .field-item:hover {
+        background: #3d3d3d;
+    }
+}
+
+
+/* Indicateurs de statut */
+
+.certificate-field-v2::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 8px;
+    height: 8px;
+    background: #28a745;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.certificate-field-v2.selected::after {
+    opacity: 1;
+}
+
+
+/* Amélioration des transitions */
+
+* {
+    transition: all 0.2s ease;
+}
+
+.certificate-field-v2,
+.field-item,
+.field-btn {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}

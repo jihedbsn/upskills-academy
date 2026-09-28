@@ -1,0 +1,250 @@
+/* RTL Support for Arabic Language */
+
+
+/* Base RTL Styles */
+
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] body {
+    font-family: 'Cairo', 'Work Sans', sans-serif;
+}
+
+
+/* Text Alignment */
+
+[dir="rtl"] .text-left {
+    text-align: right !important;
+}
+
+[dir="rtl"] .text-right {
+    text-align: left !important;
+}
+
+
+/* Margins and Padding - Exclude header elements */
+
+[dir="rtl"] .ml-auto {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+[dir="rtl"] .mr-auto {
+    margin-right: 0 !important;
+    margin-left: auto !important;
+}
+
+[dir="rtl"] .ml-10:not(.header-right__buttons .ml-10):not(.header-right__icons .ml-10) {
+    margin-left: 0 !important;
+    margin-right: 10px !important;
+}
+
+[dir="rtl"] .ml-15:not(.header-right__buttons .ml-15):not(.header-right__icons .ml-15) {
+    margin-left: 0 !important;
+    margin-right: 15px !important;
+}
+
+[dir="rtl"] .ml-20:not(.header-right__buttons .ml-20):not(.header-right__icons .ml-20) {
+    margin-left: 0 !important;
+    margin-right: 20px !important;
+}
+
+[dir="rtl"] .ml-30:not(.header-right__buttons .ml-30):not(.header-right__icons .ml-30) {
+    margin-left: 0 !important;
+    margin-right: 30px !important;
+}
+
+[dir="rtl"] .mr-10:not(.header-right__buttons .mr-10):not(.header-right__icons .mr-10) {
+    margin-right: 0 !important;
+    margin-left: 10px !important;
+}
+
+[dir="rtl"] .mr-15:not(.header-right__buttons .mr-15):not(.header-right__icons .mr-15) {
+    margin-right: 0 !important;
+    margin-left: 15px !important;
+}
+
+[dir="rtl"] .mr-20:not(.header-right__buttons .mr-20):not(.header-right__icons .mr-20) {
+    margin-right: 0 !important;
+    margin-left: 20px !important;
+}
+
+[dir="rtl"] .mr-30:not(.header-right__buttons .mr-30):not(.header-right__icons .mr-30) {
+    margin-right: 0 !important;
+    margin-left: 30px !important;
+}
+
+
+/* Icons Direction */
+
+[dir="rtl"] .icon-chevron-right::before {
+    content: "\f053" !important;
+}
+
+[dir="rtl"] .icon-chevron-left::before {
+    content: "\f054" !important;
+}
+
+[dir="rtl"] .icon-arrow-right::before {
+    content: "\f060" !important;
+}
+
+[dir="rtl"] .icon-arrow-left::before {
+    content: "\f061" !important;
+}
+
+
+/* Blog Specific RTL Styles */
+
+[dir="rtl"] .blogCard.-type-2 .blogCard__image {
+    margin-right: 0 !important;
+    margin-left: 15px !important;
+}
+
+
+/* Article Specific RTL Styles */
+
+[dir="rtl"] .articleCard.-type-2 .articleCard__image {
+    margin-right: 0 !important;
+    margin-left: 15px !important;
+}
+
+[dir="rtl"] .article-single__header .d-flex.items-center .ml-20 {
+    margin-left: 0 !important;
+    margin-right: 20px !important;
+}
+
+[dir="rtl"] .article-single__footer .mr-15 {
+    margin-right: 0 !important;
+    margin-left: 15px !important;
+}
+
+[dir="rtl"] .article-single__footer .mr-10 {
+    margin-right: 0 !important;
+    margin-left: 10px !important;
+}
+
+[dir="rtl"] .blog-single__header .d-flex.items-center .ml-20 {
+    margin-left: 0 !important;
+    margin-right: 20px !important;
+}
+
+[dir="rtl"] .blog-single__footer .mr-15 {
+    margin-right: 0 !important;
+    margin-left: 15px !important;
+}
+
+[dir="rtl"] .blog-single__footer .mr-10 {
+    margin-right: 0 !important;
+    margin-left: 10px !important;
+}
+
+
+/* Form Elements */
+
+[dir="rtl"] .form-input input {
+    text-align: right;
+}
+
+[dir="rtl"] .form-input button {
+    left: 5px !important;
+    right: auto !important;
+}
+
+
+/* Search Results */
+
+[dir="rtl"] .search-results .ml-20 {
+    margin-left: 0 !important;
+    margin-right: 20px !important;
+}
+
+
+/* Pagination */
+
+[dir="rtl"] .pagination .page-link {
+    text-align: center;
+}
+
+
+/* Responsive Adjustments */
+
+@media (max-width: 768px) {
+    [dir="rtl"] .header-right__buttons .ml-30 {
+        margin-left: 0 !important;
+        margin-right: 30px !important;
+    }
+    [dir="rtl"] .header-right__buttons .ml-20 {
+        margin-left: 0 !important;
+        margin-right: 20px !important;
+    }
+}
+
+
+/* Header Specific RTL Fixes */
+
+[dir="rtl"] .header-right__buttons .ml-20 {
+    margin-left: 20px !important;
+    margin-right: 0 !important;
+}
+
+[dir="rtl"] .header-right__buttons .ml-30 {
+    margin-left: 30px !important;
+    margin-right: 0 !important;
+}
+
+[dir="rtl"] .header-right__icons .ml-20 {
+    margin-left: 20px !important;
+    margin-right: 0 !important;
+}
+
+
+/* Cart Badge RTL Fix */
+
+[dir="rtl"] .cart-badge {
+    right: auto !important;
+    left: -8px !important;
+}
+
+
+/* Cart Icon RTL Positioning */
+
+[dir="rtl"] .header-right__icons .icon-basket {
+    position: relative !important;
+}
+
+[dir="rtl"] .header-right__icons a[href*="cart"] {
+    position: relative !important;
+}
+
+[dir="rtl"] .header-right__icons>div:first-child {
+    position: relative !important;
+}
+
+
+/* Ensure cart icon stays in correct position */
+
+[dir="rtl"] .header-right__icons .d-flex {
+    position: relative !important;
+}
+
+
+/* Menu Subnav RTL Fix */
+
+[dir="rtl"] .menu__nav .subnav {
+    right: auto !important;
+    left: 0 !important;
+}
+
+[dir="rtl"] .menu-item-has-children .subnav {
+    text-align: right !important;
+}
+
+
+/* Partnership Menu RTL Fix */
+
+[dir="rtl"] .menu-item-has-children .subnav li {
+    text-align: right !important;
+}

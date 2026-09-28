@@ -1,0 +1,76 @@
+/* =============================================================================
+   Upskills Academy — brand theme over the Vuexy admin template.
+   Loaded AFTER vuexy-custom.css. Derived from design-system/tokens.css:
+   navy #093162 (primary) · teal #3cb4b0 (accent) · off-white #f7f8fa
+   ========================================================================== */
+:root {
+  --us-navy: #093162;
+  --us-navy-dark: #081d36;
+  --us-navy-700: #264a75;
+  --us-teal: #3cb4b0;
+  --us-teal-600: #297a7b;
+  --us-teal-50: #eff9f9;
+  --us-bg: #f7f8fa;
+}
+
+/* -- Bootstrap/Vuexy primary (was #7367f0) ---------------------------------- */
+.btn-primary,
+.btn-primary:focus,
+.pagination .page-item.active .page-link,
+.custom-control-input:checked ~ .custom-control-label::before,
+.form-check-input:checked,
+.nav-pills .nav-link.active,
+.bg-primary {
+  background-color: var(--us-navy) !important;
+  border-color: var(--us-navy) !important;
+}
+.btn-primary:hover, .btn-primary:active,
+.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: var(--us-navy-dark) !important;
+  border-color: var(--us-navy-dark) !important;
+}
+.btn-outline-primary { color: var(--us-navy) !important; border-color: var(--us-navy) !important; }
+.btn-outline-primary:hover { background-color: var(--us-navy) !important; color: #fff !important; }
+.text-primary, a { color: var(--us-navy); }
+a:hover { color: var(--us-teal-600); }
+.badge-primary, .badge.bg-primary { background-color: var(--us-navy) !important; }
+.badge-light-primary { background-color: var(--us-teal-50) !important; color: var(--us-teal-600) !important; }
+
+/* -- Sidebar (vertical menu) -------------------------------------------------- */
+.main-menu.menu-dark, .main-menu .navigation, .main-menu {
+  background-color: #081d36;
+}
+.main-menu .navigation li a { color: #d7dee6; }
+.main-menu .navigation > li.active > a,
+.main-menu .navigation > li.sidebar-group-active > a {
+  background: linear-gradient(118deg, #093162, rgba(9, 49, 98, 0.7)) !important;
+  box-shadow: 0 0 10px 1px rgba(9, 49, 98, 0.7) !important;
+  color: #fff !important;
+  border-radius: 4px;
+}
+.main-menu .navigation > li ul .active {
+  background: linear-gradient(118deg, #3cb4b0, rgba(60, 180, 176, 0.7)) !important;
+  box-shadow: 0 0 10px 1px rgba(60, 180, 176, 0.7) !important;
+}
+
+/* -- Forms -------------------------------------------------------------------- */
+.form-control:focus, .form-select:focus, .custom-select:focus {
+  border-color: var(--us-teal) !important;
+  box-shadow: 0 0 0 0.2rem rgba(60, 180, 176, 0.25) !important;
+}
+.select2-container--default .select2-selection--single:focus,
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+  border-color: var(--us-teal) !important;
+}
+
+/* -- Cards, tables, misc ------------------------------------------------------ */
+.card { border-radius: 8px; }
+.table thead th { background-color: var(--us-bg); color: #081d36; }
+.spinner-border.text-primary { color: var(--us-navy) !important; }
+.progress-bar { background-color: var(--us-teal); }
+.nav-tabs .nav-link.active { color: var(--us-navy); border-bottom-color: var(--us-navy); }
+
+/* -- SweetAlert2 confirm buttons --------------------------------------------- */
+.swal2-confirm.btn-primary, .swal2-styled.swal2-confirm {
+  background-color: var(--us-navy) !important;
+}
